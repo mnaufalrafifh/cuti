@@ -24,3 +24,7 @@ Route::get('login', function () {
 Route::get('create', function () {
     return view('admin/form-cuti/jenis-cuti/create');
 });
+
+Route::get('index', function () {
+    return view('admin/form-cuti/jenis-cuti/index-cuti');
+});

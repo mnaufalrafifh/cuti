@@ -1,49 +1,34 @@
 @extends('layouts.template_back-end')
 @section('content')
-<!-- Page wrapper  -->
-        <!-- ============================================================== -->
-        <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <div class="row">
-                <div class="col-lg-12 ">
-                  <section class="panel">
-                    <header class="panel-heading">
-                      Advanced Form validations
-                    </header>
-                    <div class="panel-body">
-                      <div class="form ml-4">
-                        <form class="form-validate form-horizontal " id="register_form" method="get" action="">
-                          <div class="form-group ">
-                            <label for="fullname" class="control-label col-lg-2">Full name <span class="required">*</span></label>
-                            <div class="col-lg-10">
-                              <input class=" form-control" id="fullname" name="fullname" type="text" />
-                            </div>
-                          </div>
-                          <div class="form-group ">
-                            <label for="address" class="control-label col-lg-2">Address <span class="required">*</span></label>
-                            <div class="col-lg-10">
-                              <input class=" form-control" id="address" name="address" type="text" />
-                            </div>
-                          </div>
-                          <div class="form-group ">
-                            <label for="username" class="control-label col-lg-2">Username <span class="required">*</span></label>
-                            <div class="col-lg-10">
-                              <input class="form-control " id="username" name="username" type="text" />
-                            </div>
-                          </div>
-                          <div class="form-group ">
-                            <label for="password" class="control-label col-lg-2">Password <span class="required">*</span></label>
-                            <div class="col-lg-10">
-                              <input class="form-control " id="password" name="password" type="password" />
-                            </div>
-                          </div>
-                          <div class="form-group ">
-                            <label for="confirm_password" class="control-label col-lg-2">Confirm Password <span class="required">*</span></label>
-                            <div class="col-lg-10">
-                              <input class="form-control " id="confirm_password" name="confirm_password" type="password" />
-                            </div>
-                          </div>
-        </div>
+  <section class="wrapper">
+    <div class="row">
+      <div class="col-lg-12">
+          <h3 class="page-header">Tambah Jenis Cuti</h3>
+      </div>
+    </div>
+    <!-- Form validations -->
+    <div class="row mt-4">
+      <div class="col-lg-12">
+        <section class="panel">
+          <header class="panel-heading">
+          </header>
+          <div class="panel-body">
+            <div class="form">
+              <form class="form-validate form-horizontal" id="feedback_form" method="POST" action="">
+                <div class="form-group ">
+                  <label for="cname" class="control-label col-lg-2">Jenis Cuti <span class="required"></span></label>
+                  <div class="col">
+                    <input class="form-control mt-1" id="cname" name="" minlength="5" placeholder="Masukkan Jenis Cuti" type="text" required />
+                  </div>
+                  <label for="cname" class="control-label col-lg-2 mt-2">Lama Cuti (Hari) <span class="required"></span></label>
+                  <div class="col">
+                    <input class="form-control mt-1" id="cname" name="" minlength="5" placeholder="Masukkan Lama Cuti" type="number" required />
+                  </div>
+                    <div class="col">
+                      <td><a class="btn btn-danger mt-2" href="">Kembali</a></td>
+                      <td><a class="btn btn-primary mt-2" href="">Submit</a></td>
+                    </div>
+                </div>
+
+              </div>
 @endsection
