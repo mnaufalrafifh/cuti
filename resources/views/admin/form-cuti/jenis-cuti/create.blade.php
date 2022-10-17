@@ -25,7 +25,7 @@
                     <input class="form-control mt-1" id="cname" name="" minlength="5" placeholder="Masukkan Lama Cuti" type="number" required />
                   </div>
                     <div class="col">
-                      <td><a class="btn btn-danger mt-2" href="">Kembali</a></td>
+                      <td><a class="btn btn-danger mt-2" href="/index">Kembali</a></td>
                       <td><a class="btn btn-primary mt-2" href="">Submit</a></td>
                     </div>
                 </div>

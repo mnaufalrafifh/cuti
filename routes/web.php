@@ -14,17 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('admin/dashboard');
+    return view('welcome');
 });
 
-Route::get('login', function () {
-    return view('login');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/index', function() {
+    return view('index-cuti');
 });
 
-Route::get('create', function () {
-    return view('admin/form-cuti/jenis-cuti/create');
-});
-
-Route::get('index', function () {
-    return view('admin/form-cuti/jenis-cuti/index-cuti');
-});
+require __DIR__.'/auth.php';
