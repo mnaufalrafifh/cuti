@@ -4,11 +4,11 @@
     <div class="row">
       <div class="col-lg-12">
     <h3 class="page-header">Jenis Cuti</h3>
-    <a href="/create" class="btn btn-primary">Tambah Jenis Cuti</a>
+    <a href="{{ route('jenis-cuti.create')}}" class="btn btn-primary">Tambah Jenis Cuti</a>
       </div>
     </div>
     <!-- Form validations -->
-    <div class="row mt-4">
+    <div class="row">
       <div class="col-lg-12">
         <section class="panel">
           <header class="panel-heading">

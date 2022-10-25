@@ -16,12 +16,12 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/index">
+            <a href="/jenis-cuti">
               <i class="bi bi-circle"></i><span>Jenis Cuti</span>
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
+            <a href="/pengajuan-cuti">
               <i class="bi bi-circle"></i><span>Pengajuan Cuti</span>
             </a>
           </li>
