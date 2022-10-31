@@ -16,15 +16,16 @@ return new class extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_user')
+            ->constrained('users')
             ->onUpdate('cascade')
             ->onDelete('cascade')
-            ->constrained('users');
-            $table->integer('nik');
-            $table->string('nama_lengkap');
-            $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->text('alamat');
-            $table->integer('no_telp');
-            $table->string('jabatan');
+            ->nullable();
+            $table->integer('nik')->nullable();
+            $table->string('nama_lengkap')->nullable();
+            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
+            $table->text('alamat')->nullable();
+            $table->integer('no_telp')->nullable();
+            $table->string('jabatan')->nullable();
             $table->timestamps();
         });
     }

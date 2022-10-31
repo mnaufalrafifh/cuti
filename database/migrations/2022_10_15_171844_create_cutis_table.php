@@ -16,17 +16,15 @@ return new class extends Migration
         Schema::create('cutis', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_jenisCuti')
-            ->onUpdate('cascade')
-            ->onDelete('cascade')
-            ->constrained('jenis_cutis');
+            ->constrained('jenis_cutis')
+            ->cascadeOnUpdate()->cascadeOnDelete();
             $table->text('alasan_cuti');
             $table->date('lama_cuti');
             $table->text('alamat_cuti');
             $table->integer('no_telp');
             $table->foreignId('id_pegawai')
-            ->onUpdate('cascade')
-            ->onDelete('cascade')
-            ->constrained('pegawais');
+            ->constrained('pegawais')
+            ->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('status', ['Menunggu Approval', 'Disetujui', 'Tidak Disetujui']);
             $table->string('upload_file');
             $table->timestamps();

@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\CutiModel;
+use App\Models\JenisCutiModel;
+use App\Models\PegawaiModel;
 
 class CutiController extends Controller
 {
@@ -14,7 +17,11 @@ class CutiController extends Controller
      */
     public function index()
     {
-        return view('admin.form-cuti.pengajuan-cuti.create');
+        $data = CutiModel::join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
+        ->get();
+        $jenis = JenisCutiModel::all();
+
+        return view('admin.form-cuti.pengajuan-cuti.create', compact('data','jenis'));
     }
 
     /**
@@ -24,7 +31,7 @@ class CutiController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,7 +42,75 @@ class CutiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'nip' => 'required',
+                'nama_lengkap' => 'required',
+                'jenis_kelamin' => 'required',
+                'jabatan' => 'required',
+                'unit_kerja' => 'required',
+                'masa_kerja' => 'required',
+                'id_jenisCuti' => 'required',
+                'alasan_cuti' => 'required',
+                'mulai_cuti' => 'required',
+                'akhir_cuti' => 'required',
+                'alamat_cuti' => 'required',
+                'no_telp' => 'required',
+                'upload_file' => 'required|mimes:pdf'
+            ],
+            [
+                'required' => ':Attribute harus terisi',
+                'mimes' => ':Attribute harus berupa pdf'
+            ],
+            [
+                'nip' => 'NIP',
+                'nama_lengkap' => 'Nama Lengkap',
+                'jenis_kelamin' => 'Jenis Kelamin',
+                'jabatan' => 'Jabatan',
+                'unit_kerja' => 'Unit Kerja',
+                'masa_kerja' => 'Masa Kerja',
+                'id_jenisCuti' => 'Jenis Cuti',
+                'alasan_cuti' => 'Alasan Cuti',
+                'mulai_cuti' => 'Mulai Cuti',
+                'akhir_cuti' => 'Akhir Cuti',
+                'alamat_cuti' => 'Alamat Cuti',
+                'no_telp' => 'No Telepon',
+                'upload_file' => 'File Persyaratan'
+            ]
+        );
+        $file = $request->file('upload_file');
+        $date = date("d-m-Y His");
+        $final_file_name = $date . '.' . $file->getClientOriginalExtension();
+
+        try {
+            $tambahDataP = new PegawaiModel;
+            $tambahDataP->nip = $request->get('nip');
+            $tambahDataP->nama_lengkap = $request->get('nama_lengkap');
+            $tambahDataP->jenis_kelamin = $request->get('jenis_kelamin');
+            $tambahDataP->jabatan = $request->get('jabatan');
+            $tambahDataP->unit_kerja = $request->get('unit_kerja');
+            $tambahDataP->masa_kerja = $request->get('masa_kerja');
+            $tambahDataP->id_pegawai = 3;
+            $tambahDataP->save();
+
+            $tambahDataC = new CutiModel;
+            $tambahDataC->id_jenisCuti = $request->get('id_jenisCuti');
+            $tambahDataC->alasan_cuti = $request->get('alasan_cuti');
+            $tambahDataC->mulai_cuti = $request->get('mulai_cuti');
+            $tambahDataC->akhir_cuti = $request->get('akhir_cuti');
+            $tambahDataC->lama_cuti = $request->get('lama_cuti');
+            $tambahDataC->id_pegawai = $tambahDataP->id;
+            $tambahDataC->alamat_cuti = $request->get('alamat_cuti');
+            $tambahDataC->no_telp = $request->get('no_telp');
+            $path = public_path('image\file_persyaratan');
+            if ($file->move($path, $final_file_name)) {
+                $tambahDataC->upload_file = $final_file_name;
+            }
+            $tambahDataC->save();
+            return redirect()->back()->withStatus('Berhasil Menambahkan Data');
+        } catch (Exception $e) {
+            return redirect()->back()->withError('Terjadi Kesalahan');
+        }
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ProfileModel;
 
 class ProfileController extends Controller
 {
@@ -13,7 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        
+
     }
 
     /**
@@ -56,7 +57,8 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = ProfileModel::where('id_user',$id)->first();
+        return view('admin.profile.edit',compact('data'));
     }
 
     /**
@@ -68,7 +70,16 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $update = ProfileModel::where('id_user',$id)->update([
+            'id_user' => $id,
+            'nik' => $request->get('nik'),
+            'nama_lengkap' => $request->get('nama'),
+            'jenis_kelamin' => $request->get('gender'),
+            'alamat' => $request->get('alamat'),
+            'no_telp' => $request->get('no_telp'),
+            'jabatan' => $request->get('jabatan'),
+        ]);
+        return redirect()->route('profile.edit',auth()->user()->id)->withStatus('Berhasil mengganti data');
     }
 
     /**

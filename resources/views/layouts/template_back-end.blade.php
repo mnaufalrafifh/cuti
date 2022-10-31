@@ -27,7 +27,10 @@
   <link href="{{ asset('') }}back-end/assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
   <link href="{{ asset('') }}back-end/assets/css/style.css" rel="stylesheet">
+
 
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
@@ -41,7 +44,8 @@
   @include('partials.navbar_back-end')
   @include('partials.sidebar_back-end')
   <main id="main" class="main">
-  @yield('content')
+      @yield('content')
+      @include('layouts.notif')
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -71,8 +75,16 @@
   <script src="{{ asset('') }}back-end/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ asset('') }}back-end/assets/js/main.js"></script>
-
+  <script>
+    $(document).ready(function () {
+    $('#example').DataTable();
+});
+  </script>
+    @stack('js')
 </body>
 
 </html>

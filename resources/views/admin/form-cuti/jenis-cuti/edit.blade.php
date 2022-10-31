@@ -22,12 +22,13 @@
           <div class="panel-body">
             {{-- <h5 class="card-title"></h5> --}}
             <div class="form">
-              <form class="form-validate form-horizontal" method="POST" action="{{ route('jenis-cuti.store') }}" autocomplete="off">
+              <form class="form-validate form-horizontal" method="POST" action="{{ route('jenis-cuti.update', $data->id) }}" autocomplete="off">
+                @method('PUT')
                 @csrf
                 <div class="form-group ">
                   <label for="nama" class="control-label col-lg-2 mt-3"><strong>Jenis Cuti</strong> <span class="required"></span></label>
                   <div class="col">
-                    <input class="form-control mt-1" id="nama" name="nama_cuti" minlength="5" placeholder="Masukkan Jenis Cuti" type="text" @error('nama_cuti') is-invalid @enderror />
+                    <input class="form-control mt-1" id="nama" name="nama_cuti" minlength="5" value="{{ old('nama_cuti', $data->nama_cuti) }}" type="text" @error('nama_cuti') is-invalid @enderror />
                   </div>
                   @error('nama_cuti')
                     <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -35,7 +36,7 @@
                   @enderror
                   <label for="lama" class="control-label col-lg-2 mt-2"><strong>Lama Cuti (Hari)</strong> <span class="required"></span></label>
                   <div class="col">
-                    <input class="form-control mt-1" id="lama" name="lama_cuti" minlength="5" placeholder="Masukkan Lama Cuti" type="number" @error('lama_cuti') is-invalid @enderror />
+                    <input class="form-control mt-1" id="lama" name="lama_cuti" minlength="5" value="{{ old('lama_cuti', $data->lama_cuti) }}" type="number" @error('lama_cuti') is-invalid @enderror />
                   </div>
                   @error('lama_cuti')
                     <small class="text-danger ml-4" for="">{{ $message }}</small>

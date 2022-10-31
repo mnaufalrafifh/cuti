@@ -14,7 +14,9 @@ class JenisCutiController extends Controller
      */
     public function index()
     {
-        return view('admin.form-cuti.jenis-cuti.index');
+        $data = JenisCutiModel::all();
+
+        return view('admin.form-cuti.jenis-cuti.index', compact('data'));
     }
 
     /**
@@ -35,7 +37,29 @@ class JenisCutiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate(
+            [
+                'nama_cuti' => 'required',
+                'lama_cuti' => 'required'
+            ],
+            [
+                'required' => ':Attribute harus terisi',
+                'required' => ':Attribute harus terisi'
+            ],
+            [
+                'nama_cuti' => 'Jenis Cuti',
+                'lama_cuti' => 'Lama Cuti'
+            ]
+        );
+        try{
+            $tambahData = new JenisCutiModel;
+            $tambahData->nama_cuti = $request->get('nama_cuti');
+            $tambahData->lama_cuti = $request->get('lama_cuti');
+            $tambahData->save();
+            return redirect()->route('jenis-cuti.index')->withStatus('Berhasil Menambahkan Data');
+        }catch (Exception $e) {
+            return redirect()->back()->withError('Terjadi Kesalahan');
+        } 
     }
 
     /**
@@ -57,7 +81,8 @@ class JenisCutiController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = JenisCutiModel::find($id);
+        return view('admin.form-cuti.jenis-cuti.edit', compact('data'));
     }
 
     /**
@@ -69,7 +94,28 @@ class JenisCutiController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'nama_cuti' => 'required',
+                'lama_cuti' => 'required'
+            ],
+            [
+                'required' => ':Attribute harus terisi'
+            ],
+            [
+                'nama_cuti' => 'Jenis Cuti',
+                'lama_cuti' => 'Lama Cuti'
+            ]
+        );
+        try {
+            $updateData = JenisCutiModel::find($id);
+            $updateData->nama_cuti = $request->get('nama_cuti');
+            $updateData->lama_cuti = $request->get('lama_cuti');
+            $updateData->update();
+            return redirect()->route('jenis-cuti.index')->withStatus('Berhasil Merubah Data');
+        } catch (Exception $e){
+            return $e;
+        }
     }
 
     /**
@@ -80,6 +126,8 @@ class JenisCutiController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteData = JenisCutiModel::find($id);
+        $deleteData->delete();
+        return redirect()->route('jenis-cuti.index')->withStatus('Berhasil Menghapus Data');
     }
 }
