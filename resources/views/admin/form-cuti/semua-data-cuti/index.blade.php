@@ -47,7 +47,7 @@
                                     {{-- bukan pegawai --}}
                                     <a href="{{route('status.cuti',$item->id)}}">
                                         @if ($item->status == 'Menunggu Approval')
-                                            <span class="badge bg-warning">
+                                            <span class="badge bg-warning mt-4">
                                                 {{ucwords($item->status)}}
                                             </span>
                                         @elseif ($item->status == 'Disetujui')

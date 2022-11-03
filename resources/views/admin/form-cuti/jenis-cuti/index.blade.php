@@ -47,7 +47,7 @@
                                   <div class="d-flex flex-row">
                                     <div class="p-2">
                                       <a href="{{ route('jenis-cuti.edit', $item->id)}}" class="btn btn-warning"  style="color: white">
-                                        <i class="bi bi-grid"></i><span>Edit</span>
+                                        <i class="bi bi-pencil-square"></i><span> Edit</span>
                                       </a>
                                     </div>
                                     <div class="p-2">
@@ -55,7 +55,7 @@
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                                          <i class="bi bi-grid"></i>Delete</button>
+                                          <i class="bi bi-trash"></i> Delete</button>
                                       </form>
                                     </div>
                                   </div>
