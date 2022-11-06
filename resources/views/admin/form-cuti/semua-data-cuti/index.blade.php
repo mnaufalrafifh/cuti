@@ -46,13 +46,8 @@
                                 @if (Auth::user()->id_roles != 3 )
                                     {{-- bukan pegawai --}}
                                     <a href="{{route('status.cuti',$item->id)}}">
-<<<<<<< Updated upstream
-                                        @if ($item->status == 'Menunggu Approval')
-                                            <span class="badge bg-warning mt-4">
-=======
                                         @if ($item->status == 'Ditangguhkan')
                                             <span class="badge bg-warning mt-4 d-flex justify-content-center">
->>>>>>> Stashed changes
                                                 {{ucwords($item->status)}}
                                             </span>
                                         @elseif ($item->status == 'Disetujui')
