@@ -10,6 +10,8 @@
         </a>
       </li><!-- End Dashboard Nav -->
 
+    @if (Auth::user()->id_roles != 3
+    && Auth::user()->id_roles !=2 )
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#akun-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Kelola Akun</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -21,12 +23,13 @@
                   </a>
                 </li>
                 <li>
-                  <a href="">
+                  <a href="/data-akun">
                     <i class="bi bi-circle"></i><span>Data Akun</span>
                   </a>
                 </li>
               </ul>
             </li>
+    @endif
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

@@ -7,6 +7,7 @@ use App\Http\Controllers\JenisCutiController;
 use App\Http\Controllers\DataCutiController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TambahAkunController;
+use App\Http\Controllers\DataAkunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/tambah-akun', [User::class, 'tambah-akun']);
     Route::resource('/tambah-akun', TambahAkunController::class);
+
+    Route::get('/data-akun', [User::class, 'data-akun']);
+    Route::resource('/data-akun', DataAkunController::class);
 
     Route::get('/data-cuti', [Cuti::class, 'data-cuti']);
     Route::get('download-pdf/{id}',[DataCutiController::class,'download'])->name('download.cuti');
