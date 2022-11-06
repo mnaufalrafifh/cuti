@@ -59,7 +59,7 @@ class JenisCutiController extends Controller
             return redirect()->route('jenis-cuti.index')->withStatus('Berhasil Menambahkan Data');
         }catch (Exception $e) {
             return redirect()->back()->withError('Terjadi Kesalahan');
-        } 
+        }
     }
 
     /**

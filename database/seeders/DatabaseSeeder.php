@@ -16,13 +16,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Role::create([
-            'nama_role'=>'admin'
+            'nama_role'=>'Admin'
         ]);
         Role::create([
-            'nama_role'=>'pejabat'
+            'nama_role'=>'Pejabat'
         ]);
         Role::create([
-            'nama_role'=>'pegawai'
+            'nama_role'=>'Pegawai'
         ]);
         $this->call([
             UserSeeder::class,

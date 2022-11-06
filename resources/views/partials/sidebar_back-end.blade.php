@@ -11,6 +11,24 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#akun-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Kelola Akun</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="akun-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                  <a href="/tambah-akun">
+                    <i class="bi bi-circle"></i><span>Tambah Akun</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="">
+                    <i class="bi bi-circle"></i><span>Data Akun</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Cuti</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

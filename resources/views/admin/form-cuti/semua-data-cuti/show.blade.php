@@ -217,8 +217,10 @@
                             <div class="row">
                                 <div class="form-group col-md-6 d-flex justify-content-center">
                                     <select name="status" id="" class="form-control">
+                                        <option value="">Pilih Status</option>
                                         <option value="disetujui">Disetujui</option>
                                         <option value="ditolak">Ditolak</option>
+                                        <option value="perubahan">Perubahan</option>
                                     </select>
                                 </div>
 

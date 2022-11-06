@@ -26,7 +26,7 @@
                     <div class="card mt-4">
                         <div class="card-body">
                           <h2 class="card-title"></h2>
-                    
+
                           <!-- Default Table -->
                           <table class="table table-bordered">
                             <thead>

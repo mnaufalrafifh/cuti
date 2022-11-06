@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreignId('id_pegawai')
             ->constrained('pegawais')
             ->cascadeOnUpdate()->cascadeOnDelete();
-            $table->enum('status', ['Menunggu Approval', 'Disetujui', 'Tidak Disetujui']);
+            $table->enum('status', ['Ditangguhkan', 'Disetujui', 'Ditolak', 'Perubahan']);
             $table->string('upload_file');
             $table->timestamps();
         });

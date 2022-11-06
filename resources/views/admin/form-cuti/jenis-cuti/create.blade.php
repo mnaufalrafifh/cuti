@@ -22,7 +22,7 @@
           <div class="panel-body">
             {{-- <h5 class="card-title"></h5> --}}
             <div class="form">
-              <form class="form-validate form-horizontal" method="POST" action="{{ route('jenis-cuti.store') }}" autocomplete="off">
+              <form class="form-validate form-horizontal" method="POST" action="{{ route('jenis-cuti.store') }}" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <div class="form-group ">
                   <label for="nama" class="control-label col-lg-2 mt-3"><strong>Jenis Cuti</strong> <span class="required"></span></label>

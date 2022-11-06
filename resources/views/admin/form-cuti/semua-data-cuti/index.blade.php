@@ -46,29 +46,42 @@
                                 @if (Auth::user()->id_roles != 3 )
                                     {{-- bukan pegawai --}}
                                     <a href="{{route('status.cuti',$item->id)}}">
+<<<<<<< Updated upstream
                                         @if ($item->status == 'Menunggu Approval')
                                             <span class="badge bg-warning mt-4">
+=======
+                                        @if ($item->status == 'Ditangguhkan')
+                                            <span class="badge bg-warning mt-4 d-flex justify-content-center">
+>>>>>>> Stashed changes
                                                 {{ucwords($item->status)}}
                                             </span>
                                         @elseif ($item->status == 'Disetujui')
-                                            <span class="badge bg-success">
+                                            <span class="badge bg-success mt-4 d-flex justify-content-center">
+                                                {{ucwords($item->status)}}
+                                            </span>
+                                        @elseif ($item->status == 'Perubahan')
+                                            <span class="badge bg-warning mt-4 d-flex justify-content-center">
                                                 {{ucwords($item->status)}}
                                             </span>
                                         @else
-                                        <span class="badge bg-danger">
+                                        <span class="badge bg-danger mt-4 d-flex justify-content-center">
                                             {{ucwords($item->status)}}
                                         </span>
                                         @endif
                                     </a>
                                 @else
                                     {{-- pegawai --}}
-                                    @if ($item->status == 'Menunggu Approval')
-                                        <span class="badge bg-warning">
+                                    @if ($item->status == 'Ditangguhkan')
+                                        <span class="badge bg-warning mt-4 d-flex justify-content-center">
+                                            {{ucwords($item->status)}}
+                                        </span>
+                                    @elseif ($item->status == 'Perubahan')
+                                        <span class="badge bg-warning mt-4 d-flex justify-content-center">
                                             {{ucwords($item->status)}}
                                         </span>
                                     @elseif ($item->status == 'Disetujui')
                                         <a href="{{route('download.cuti',$item->id)}}">
-                                            <span class="badge bg-success">
+                                            <span class="badge bg-success mt-4 d-flex justify-content-center">
                                                 Permohonan Disetujui silahkan download.
                                             </span>
                                         </a>
