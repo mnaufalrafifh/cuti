@@ -36,7 +36,7 @@
             <div class="col-md-8 mx-auto">
                 <div class="row">
                     <div class="col-md-3 d-flex justify-content-end">
-                        <img src="public/back-end/assets/img/logosurat.jpg" class="img-fluid" width="200" height="300" alt="">
+                        <img src="{{ asset('') }}back-end/assets/logosurat.jpg" class="img-fluid" width="200" height="300" alt="">
                     </div>
                     <div class="col-md-9 align-self-center">
                         <div class="row">
@@ -49,7 +49,6 @@
                                     <p class="text-center">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
                                 </div>
                                 <h1 class="text-center fw-bold">B O N D O W O S O</h1>
-                                <b>____________________________________________________________________________________________________________</b>
                             </div>
                         </div>
                         <div>
