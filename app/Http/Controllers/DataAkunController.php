@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
+use App\Models\Role;
 
 class DataAkunController extends Controller
 {
@@ -14,7 +16,9 @@ class DataAkunController extends Controller
      */
     public function index()
     {
-        $data = User::join('roles', 'users.id_roles', 'roles.id')
+        $data = DB::table('users')
+        ->join('roles', 'users.id_roles', '=', 'roles.id')
+        ->select('users.*', 'roles.nama_role')
         ->orderBy('users.id', 'asc')
         ->get();
         return view('admin.data-akun.index', compact('data'));
@@ -60,7 +64,13 @@ class DataAkunController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = DB::table('users')
+        ->join('roles', 'users.id_roles', '=', 'roles.id')
+        ->select('users.*', 'roles.nama_role')
+        ->get();
+
+        $role = Role::all();
+        return view('admin.data-akun.edit', compact('data', 'role'));
     }
 
     /**
@@ -83,6 +93,9 @@ class DataAkunController extends Controller
      */
     public function destroy($id)
     {
-        //
+       $deleteData = User::find($id);
+       $deleteData->delete();
+
+       return redirect()->route('data-akun.index')->withStatus('Berhasil Menghapus Data');
     }
 }
