@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CutiModel;
 use App\Models\JenisCutiModel;
 use App\Models\PegawaiModel;
+use PDF;
 
 class DataCutiController extends Controller
 {
@@ -202,6 +203,19 @@ class DataCutiController extends Controller
 
     public function download($id)
     {
-        return 'halaman download';
+
+        $dataCuti =  CutiModel::select('cutis.*','jenis_cutis.id as id_jenis','jenis_cutis.nama_cuti','jenis_cutis.lama_cuti','pegawais.id as id_pegawai',
+                                        'pegawais.nip','pegawais.nama_lengkap','pegawais.jenis_kelamin','pegawais.jabatan',
+                                        'pegawais.unit_kerja','pegawais.masa_kerja')
+                                ->join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
+                                ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
+                                ->where('cutis.id', $id)
+                                ->first();
+        //mengambil data dan tampilan dari halaman laporan_pdf
+        //data di bawah ini bisa kalian ganti nantinya dengan data dari database
+        $data = PDF::loadview('cuti_besar', ['data' => $dataCuti])->setOptions(['defaultFont' => 'sans-serif']);
+        //mendownload laporan.pdf
+    	return $data->download('laporan.pdf');
+        // return $data->stream();
     }
 }

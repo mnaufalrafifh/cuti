@@ -38,8 +38,8 @@
                             <td>{{$item->nama_lengkap}}</td>
                             <td>{{$item->unit_kerja}}</td>
                             <td>{{$item->nama_cuti}}</td>
-                            <td>{{$item->mulai_cuti}}</td>
-                            <td>{{$item->akhir_cuti}}</td>
+                            <td>{{date("d F Y",strtotime($item->mulai_cuti))}}</td>
+                            <td>{{date("d F Y",strtotime($item->akhir_cuti))}}</td>
                             <td>{{$item->no_telp}}</td>
                             <td>
 

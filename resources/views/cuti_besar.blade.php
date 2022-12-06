@@ -17,7 +17,7 @@
             margin: 0;
             padding: 0;
             background-color: #FAFAFA;
-            font-family: 'Tinos', serif;
+            /* font-family: 'Tinos', serif; */
             font: 12pt;
         }
         * {
@@ -57,49 +57,49 @@
                 </div>
 
             </div>
-            <img src="assets/pdf/garis.svg" class="my-3" alt="">
+            <img src="{{ asset('') }}back-end/assets/logosurat.jpg" class="my-3" alt="">
             <div class="col-md-8 mx-auto">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-4">
-                        <h2 class="fw-bold text-center"><u>SURAT IZIN CUTI BESAR</u></h2>
+                        <h2 class="fw-bold text-center"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
                         <p class="text-center">Nomor : 852/             /430.6.2/2022</p>
                     </div>
                 </div>
                 <div class="content">
-                    <p>Diberikan Cuti Besar (haji) untuk tahun 2022 kepada Pegawai Negeri Sipil :</p>
+                    <p>Diberikan {{ ($data -> nama_cuti) }} untuk tahun {{ date("Y",strtotime($data->mulai_cuti)) }} kepada Pegawai Negeri Sipil :</p>
                     <div class="table-responsive">
                         <table class="">
                             <tbody>
                                 <tr>
                                     <td width="20%">Nama</td>
                                     <td width="1%">:</td>
-                                    <td ></td>
+                                    <td >{{ ($data -> nama_lengkap) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="text-uppercase py-2">nip</td>
                                     <td width="1%">:</td>
-                                    <td >afag</td>
+                                    <td >{{ ($data -> nip) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="py-2">Pangkat / Golongan Ruang</td>
                                     <td width="1%">:</td>
-                                    <td ></td>
+                                    <td >{{ ($data -> nama) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="py-2">Jabatan</td>
                                     <td width="1%">:</td>
-                                    <td ></td>
+                                    <td >{{ ($data -> jabatan) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="py-2">Satuan Organisasi</td>
                                     <td width="1%">:</td>
-                                    <td ></td>
+                                    <td >{{ ($data -> unit_kerja) }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <p>Selama … (….. ) hari kerja terhitung sejak tanggal ... Juni 2022 sampai dengan … Juli 2022, dengan ketentuan sebagai berikut :</p>
+                    <p>Selama … (….. ) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
                         <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
                         <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa;</li>
@@ -112,7 +112,7 @@
                 <div class="content-ttd my-4">
                     <div class="row">
                         <div class="col-md-4 ms-auto">
-                            <p class="text-center">Bondowoso,         November 2022</p>
+                            <p class="text-center">Bondowoso, {{date("d F Y")}}</p>
                             <div class="kolom-ttd">
                                 <h4 class="fw-bold text-center">An. BUPATI BONDOWOSO</h4>
                                 <h5 class="fw-bold text-center">Sekretaris Daerah</h5>
