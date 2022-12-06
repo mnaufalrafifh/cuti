@@ -3,8 +3,8 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="/" class="logo d-flex align-items-center">
-        <img src="{{asset('back-end/assets/img/logo kab.png')}}" alt="">
-        <span class="d-none d-lg-block">BKPSDM</span>
+        <img src="{{asset('back-end/assets/img/logo.oke.png')}}" alt="">
+        <span class="d-none d-lg-block mt-1 px-2">SI-ASIC</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

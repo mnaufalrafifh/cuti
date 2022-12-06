@@ -14,7 +14,7 @@
     && Auth::user()->id_roles !=2 )
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#akun-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Kelola Akun</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-person"></i><span>Kelola Akun</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="akun-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
