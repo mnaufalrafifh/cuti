@@ -17,38 +17,52 @@
             margin: 0;
             padding: 0;
             background-color: #FAFAFA;
-            /* font-family: 'Tinos', serif; */
+            font-family: 'Tinos', serif;
             font: 12pt;
         }
         * {
             box-sizing: border-box;
             -moz-box-sizing: border-box;
         }
-        p{
-            font-size: 12pt;
+        p, table, ol{
+            font-size: 9pt;
         }
-
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;   /* Chrome, Safari, Edge */
+                color-adjust: exact !important;                 /*Firefox*/     /*Firefox*/
+            }
+            html, body {
+                width: 210mm;
+                height: 297mm;
+            }
+        /* ... the rest of the rules ... */
+        }
     </style>
 </head>
 <body>
-    <div class="container-fluid my-5">
+    <div class="p-4 my-5">
         <div class="row">
-            <div class="col-md-8 mx-auto">
-                <div class="row">
-                    <div class="col-md-3 d-flex justify-content-end">
-                        <img src="{{ asset('') }}back-end/assets/logosurat.jpg" class="img-fluid" width="200" height="300" alt="">
+            <div class="col-md-12 mx-auto">
+                <div class="d-flex justify-content-center">
+                    <div class="align-items-end p-0">
+                        <img src="{{ asset('back-end/assets/img/logosurat.jpg') }}" class="img-fluid me-auto" width="120" alt="">
                     </div>
-                    <div class="col-md-9 align-self-center">
+                    <div class="align-self-center p-0 ">
                         <div class="row">
                             <div class="col-md-12 me-auto ">
-                                <h1 class="text-center fw-bold">PEMERINTAH KABUPATEN BONDOWOSO
+                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
                                     SEKRETARIAT DAERAH
                                 </h1>
-                                <h5 class="text-center">Jalan Letnan Amir Kusman Nomor 2 <i></i>( 0332 )  421153</h5>
+                                <h5 class="text-center p-0 m-0" style="font-size: 16px">Jalan Letnan Amir Kusman Nomor 2 <i></i>( 0332 )  421153</h5>
                                 <div>
-                                    <p class="text-center">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
                                 </div>
-                                <h1 class="text-center fw-bold">B O N D O W O S O</h1>
+                                <h1 class="text-center fw-bold mt-2" style="font-size: 12px">B O N D O W O S O</h1>
                             </div>
                         </div>
                         <div>
@@ -57,12 +71,12 @@
                 </div>
 
             </div>
-            <img src="{{ asset('') }}back-end/assets/logosurat.jpg" class="my-3" alt="">
+            <img src="{{ asset('') }}back-end/assets/img/garis.svg" class="my-3" alt="">
             <div class="col-md-8 mx-auto">
                 <div class="row">
                     <div class="col-md-3"></div>
-                    <div class="col-md-8 mx-auto my-4">
-                        <h2 class="fw-bold text-center"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
+                    <div class="col-md-8 mx-auto my-2">
+                        <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
                         <p class="text-center">Nomor : 852/             /430.6.2/2022</p>
                     </div>
                 </div>
@@ -82,7 +96,7 @@
                                     <td >{{ ($data -> nip) }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="20%" class="py-2">Pangkat / Golongan Ruang</td>
+                                    <td width="30%" class="py-2">Pangkat / Golongan Ruang</td>
                                     <td width="1%">:</td>
                                     <td >{{ ($data -> nama) }}</td>
                                 </tr>
@@ -110,24 +124,24 @@
                     <p>Demikian Surat Izin Cuti Besar ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
                 </div>
                 <div class="content-ttd my-4">
-                    <div class="row">
-                        <div class="col-md-4 ms-auto">
-                            <p class="text-center">Bondowoso, {{date("d F Y")}}</p>
+                    <div class="d-flex justify-content-end">
+                        <div class="">
+                            <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
                             <div class="kolom-ttd">
-                                <h4 class="fw-bold text-center">An. BUPATI BONDOWOSO</h4>
-                                <h5 class="fw-bold text-center">Sekretaris Daerah</h5>
+                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">An. BUPATI BONDOWOSO</h4>
+                                <h5 class="fw-bold text-center" style="font-size: 14px;">Sekretaris Daerah</h5>
                                 <div class="py-4"></div>
-                                <h4 class="fw-bold text-center">
+                                <h4 class="fw-bold text-center " style="font-size: 14px;">
                                     <u>Drs. BAMBANG SOEKWANTO, M.M</u>
                                 </h4>
-                                <h4 class="fw-bold text-center">Pembina Utama Madya</h4>
-                                <h4 class="fw-bold text-center">NIP.  196604051995031001</h4>
+                                <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4>
+                                <h4 class="fw-bold text-center" style="font-size: 14px;">NIP.  196604051995031001</h4>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="content-tembusan">
-                    <h5>Tembusan :</h5>
+                    <h5 style="font-size: 10pt">Tembusan :</h5>
                     <div class="row">
                         <div class="col-md-1">
                             <p>Yth. Sdr.</p>
@@ -148,5 +162,6 @@
 
 </body>
 <script>
+     print();
 </script>
 </html>

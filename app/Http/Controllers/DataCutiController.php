@@ -213,9 +213,12 @@ class DataCutiController extends Controller
                                 ->first();
         //mengambil data dan tampilan dari halaman laporan_pdf
         //data di bawah ini bisa kalian ganti nantinya dengan data dari database
-        $data = PDF::loadview('cuti_besar', ['data' => $dataCuti])->setOptions(['defaultFont' => 'sans-serif']);
+        return view('cuti_besar',['data' => $dataCuti]);
+        // $pdf = PDF::loadview('cuti_besar',['data'=> $dataCuti]);
+        // $pdf->setPaper('A3','landscape');
+        // $data = PDF::loadview('cuti_besar', ['data' => $dataCuti])->setOptions(['defaultFont' => 'sans-serif']);
         //mendownload laporan.pdf
-    	return $data->download('laporan.pdf');
-        // return $data->stream();
+        // return $pdf->stream();
+    	// return $data->download('laporan.pdf');
     }
 }
