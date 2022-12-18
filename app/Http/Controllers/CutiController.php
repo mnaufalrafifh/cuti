@@ -107,7 +107,7 @@ class CutiController extends DataCutiController
             $tambahDataC->mulai_cuti = $request->get('mulai_cuti');
             $tambahDataC->akhir_cuti = $request->get('akhir_cuti');
             $tambahDataC->lama_cuti = $request->get('jamKerja') == '5' ? $this->cekLimaHari($request->get('mulai_cuti'), $request->get('akhir_cuti')) : $this->cekHariLibur($request->get('mulai_cuti'), $request->get('akhir_cuti'));
-            $tambahDataC->jam_kerja = $request->get('jamKerja');
+            $tambahDataC->lama_kerja = $request->get('jamKerja');
             $tambahDataC->id_pegawai = $tambahDataP->id;
             $tambahDataC->alamat_cuti = $request->get('alamat_cuti');
             $tambahDataC->no_telp = $request->get('no_telp');
