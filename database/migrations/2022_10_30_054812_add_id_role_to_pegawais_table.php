@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('pegawais', function (Blueprint $table) {
             $table->foreignId('id_pegawai')
-            ->constrained('roles')
+            ->constrained('users')
             ->cascadeOnUpdate()->cascadeOnDelete();
             // $table->foreign('id_pegawai')->references('id')->on('roles')->cascadeOnUpdate('cascade');
             // $table->foreignId('id_pegawai')->constrained('roles')->cascadeOnUpdate()->cascadeOnDelete();

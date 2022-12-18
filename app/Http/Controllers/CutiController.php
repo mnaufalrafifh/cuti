@@ -8,6 +8,7 @@ use App\Models\CutiModel;
 use App\Models\JenisCutiModel;
 use App\Models\PegawaiModel;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class CutiController extends DataCutiController
 {
@@ -91,7 +92,7 @@ class CutiController extends DataCutiController
             $tambahDataP->jabatan = $request->get('jabatan');
             $tambahDataP->unit_kerja = $request->get('unit_kerja');
             $tambahDataP->masa_kerja = $request->get('masa_kerja');
-            $tambahDataP->id_pegawai = 3;
+            $tambahDataP->id_pegawai = Auth::user()->id;
             $tambahDataP->save();
 
             // if ($request->get('jamKerja') == '5') {

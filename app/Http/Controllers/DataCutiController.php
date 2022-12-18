@@ -12,6 +12,7 @@ use DateInterval;
 use DatePeriod;
 use DateTime;
 use Exception;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 
 class DataCutiController extends Controller
@@ -28,9 +29,14 @@ class DataCutiController extends Controller
         'pegawais.unit_kerja','pegawais.masa_kerja')
         ->join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
         ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
-        ->orderBy('cutis.id', 'asc')
-        ->get();
-        return view('admin.form-cuti.semua-data-cuti.index', compact('data2'));
+        ->orderBy('cutis.id', 'asc');
+        if (Auth::user()->id_roles != 1 && Auth::user()->id_roles != 1) {
+            $data2 = $data2->where('pegawais.id_pegawai',Auth::user()->id)->get();
+            return view('admin.form-cuti.semua-data-cuti.index', compact('data2'));
+        }else{
+            $data2 = $data2->get();
+            return view('admin.form-cuti.semua-data-cuti.index', compact('data2'));
+        }
     }
 
     /**
