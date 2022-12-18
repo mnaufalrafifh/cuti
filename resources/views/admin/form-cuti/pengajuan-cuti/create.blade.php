@@ -147,7 +147,7 @@
                     <div class="form-group col-md-12">
                     <label for="jamKerja" class="control-label col-lg-2"><strong>Jam Kerja</strong> <span class="required"></span></label>
                         <div class="col">
-                            <select name="id_jenisCuti" id="jenisCuti" class="form-control mt-1" required>
+                            <select name="jamKerja" id="jenisCuti" class="form-control mt-1" required>
                                 <option value="">Pilih Jam Kerja</option>
                                 <option value="5">5 Hari</option>
                                 <option value="6">6 Hari</option>

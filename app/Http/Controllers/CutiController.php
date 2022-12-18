@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CutiModel;
 use App\Models\JenisCutiModel;
 use App\Models\PegawaiModel;
+use Exception;
 
-class CutiController extends Controller
+class CutiController extends DataCutiController
 {
     /**
      * Display a listing of the resource.
@@ -93,12 +94,19 @@ class CutiController extends Controller
             $tambahDataP->id_pegawai = 3;
             $tambahDataP->save();
 
+            // if ($request->get('jamKerja') == '5') {
+            //     $lima = $this->cekLimaHari($request->get('mulai_cuti'), $request->get('akhir_cuti'));
+            // } else {
+            //     $enam = $this->cekHariLibur($request->get('mulai_cuti'), $request->get('akhir_cuti'));
+            // }
+
             $tambahDataC = new CutiModel;
             $tambahDataC->id_jenisCuti = $request->get('id_jenisCuti');
             $tambahDataC->alasan_cuti = $request->get('alasan_cuti');
             $tambahDataC->mulai_cuti = $request->get('mulai_cuti');
             $tambahDataC->akhir_cuti = $request->get('akhir_cuti');
-            $tambahDataC->lama_cuti = $request->get('lama_cuti');
+            $tambahDataC->lama_cuti = $request->get('jamKerja') == '5' ? $this->cekLimaHari($request->get('mulai_cuti'), $request->get('akhir_cuti')) : $this->cekHariLibur($request->get('mulai_cuti'), $request->get('akhir_cuti'));
+            $tambahDataC->jam_kerja = $request->get('jamKerja');
             $tambahDataC->id_pegawai = $tambahDataP->id;
             $tambahDataC->alamat_cuti = $request->get('alamat_cuti');
             $tambahDataC->no_telp = $request->get('no_telp');

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 use App\Models\CutiModel;
 use App\Models\JenisCutiModel;
 use App\Models\PegawaiModel;
+use Carbon\Carbon;
+use DateInterval;
+use DatePeriod;
+use DateTime;
+use Exception;
 use PDF;
 
 class DataCutiController extends Controller
@@ -204,21 +209,115 @@ class DataCutiController extends Controller
     public function download($id)
     {
 
-        $dataCuti =  CutiModel::select('cutis.*','jenis_cutis.id as id_jenis','jenis_cutis.nama_cuti','jenis_cutis.lama_cuti','pegawais.id as id_pegawai',
+        $data =  CutiModel::select('cutis.*','jenis_cutis.id as id_jenis','jenis_cutis.nama_cuti','jenis_cutis.lama_cuti','pegawais.id as id_pegawai',
                                         'pegawais.nip','pegawais.nama_lengkap','pegawais.jenis_kelamin','pegawais.jabatan',
                                         'pegawais.unit_kerja','pegawais.masa_kerja')
                                 ->join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
                                 ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
                                 ->where('cutis.id', $id)
                                 ->first();
-        //mengambil data dan tampilan dari halaman laporan_pdf
-        //data di bawah ini bisa kalian ganti nantinya dengan data dari database
-        return view('cuti_besar',['data' => $dataCuti]);
-        // $pdf = PDF::loadview('cuti_besar',['data'=> $dataCuti]);
-        // $pdf->setPaper('A3','landscape');
-        // $data = PDF::loadview('cuti_besar', ['data' => $dataCuti])->setOptions(['defaultFont' => 'sans-serif']);
-        //mendownload laporan.pdf
-        // return $pdf->stream();
-    	// return $data->download('laporan.pdf');
+        // $to_date = Carbon::createFromFormat('Y-m-d', $data->akhir_cuti);
+        // $from_date = Carbon::createFromFormat('Y-m-d', $data->mulai_cuti);
+        // $answer_in_days = $to_date->diffInDays($from_date);
+        // $answer_in_days += 1;
+        $answer_in_days = $data->lama_kerja == '5' ? $this->cekLimaHari($data->mulai_cuti, $data->akhir_cuti) : $this->cekHariLibur($data->mulai_cuti, $data->akhir_cuti);
+        $terbilang = ucwords($this->terbilang((int) $answer_in_days));
+        if ($data->nama_cuti == 'Cuti Tahunan') {
+        }elseif ($data->nama_cuti == 'Cuti Besar') {
+            return view('cuti_besar', compact('data', 'answer_in_days','terbilang'));
+        }elseif ($data->nama_cuti == 'Cuti Sakit') {
+            return view('cuti_sakit', compact('data', 'answer_in_days','terbilang'));
+
+        }elseif ($data->nama_cuti == 'Cuti Melahirkan') {
+            return view('cuti_melahirkan', compact('data', 'answer_in_days','terbilang'));
+
+        }elseif ($data->nama_cuti == 'Cuti Karena Alasan Penting') {
+            return view('cuti_alasan_penting', compact('data', 'answer_in_days','terbilang'));
+        }elseif ($data->nama_cuti == 'Cuti Di Luar Tanggungan Negara') {
+
+        }
+
     }
+    function penyebut($nilai) {
+        $nilai = abs($nilai);
+        $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+        $temp = "";
+        if ($nilai < 12) {
+            $temp = " ". $huruf[$nilai];
+        } else if ($nilai <20) {
+            $temp = $this->penyebut($nilai - 10). " belas";
+        } else if ($nilai < 100) {
+            $temp = $this->penyebut($nilai/10)." puluh". $this->penyebut($nilai % 10);
+        } else if ($nilai < 200) {
+            $temp = " seratus" . $this->penyebut($nilai - 100);
+        } else if ($nilai < 1000) {
+            $temp = $this->penyebut($nilai/100) . " ratus" . $this->penyebut($nilai % 100);
+        } else if ($nilai < 2000) {
+            $temp = " seribu" . $this->penyebut($nilai - 1000);
+        } else if ($nilai < 1000000) {
+            $temp = $this->penyebut($nilai/1000) . " ribu" . $this->penyebut($nilai % 1000);
+        } else if ($nilai < 1000000000) {
+            $temp = $this->penyebut($nilai/1000000) . " juta" . $this->penyebut($nilai % 1000000);
+        } else if ($nilai < 1000000000000) {
+            $temp = $this->penyebut($nilai/1000000000) . " milyar" . $this->penyebut(fmod($nilai,1000000000));
+        } else if ($nilai < 1000000000000000) {
+            $temp = $this->penyebut($nilai/1000000000000) . " trilyun" . $this->penyebut(fmod($nilai,1000000000000));
+        }
+        return $temp;
+    }
+
+    function terbilang($nilai) {
+        if($nilai<0) {
+            $hasil = "minus ". trim($this->penyebut($nilai));
+        } else {
+            $hasil = trim($this->penyebut($nilai));
+        }
+        return $hasil;
+    }
+
+    public function cekHariLibur($startparam, $endparam)
+    {
+        $start = new DateTime($startparam);
+        $end = new DateTime($endparam);
+        // otherwise the  end date is excluded (bug?)
+        $end->modify('+1 day');
+
+        $interval = $end->diff($start);
+
+        // total days
+        $days = $interval->days;
+
+        // create an iterateable period of date (P1D equates to 1 day)
+        $period = new DatePeriod($start, new DateInterval('P1D'), $end);
+
+        // best stored as array, so you can add more than one
+        // $holidays = array('2012-09-07');
+
+        foreach($period as $dt) {
+            $curr = $dt->format('D');
+            // substract if Saturday or Sunday
+            if ( $curr == 'Sun' || $curr == 'Sat') {
+                $days--;
+            }
+
+            // (optional) for the updated question
+            // elseif (in_array($dt->format('Y-m-d'), $holidays)) {
+            //     $days--;
+            // }
+        }
+        return $days;
+    }
+
+    public function cekLimaHari($startparam, $endparam)
+    {
+        $start = strtotime($startparam);
+        $end = strtotime($endparam);
+        $count = 0;
+        while(date('Y-m-d', $start) < date('Y-m-d', $end)){
+          $count += date('N', $start) < 6 ? 1 : 0;
+          $start = strtotime("+1 day", $start);
+        }
+        return $count;
+    }
+
 }

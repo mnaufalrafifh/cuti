@@ -56,11 +56,11 @@
                         <div class="row">
                             <div class="col-md-12 me-auto ">
                                 <h1 class="text-center fw-bold p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
-                                    SEKRETARIAT DAERAH
+                                    BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA
                                 </h1>
-                                <h5 class="text-center p-0 m-0" style="font-size: 16px">Jalan Letnan Amir Kusman Nomor 2 <i></i>( 0332 )  421153</h5>
+                                <h5 class="text-center p-0 m-0" style="font-size: 16px">Jl. KH. Ashari 123 <i></i>( 0332 )  429584</h5>
                                 <div>
-                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
                                 </div>
                                 <h1 class="text-center fw-bold mt-2" style="font-size: 12px">B O N D O W O S O</h1>
                             </div>
@@ -77,7 +77,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-2">
                         <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
-                        <p class="text-center">Nomor : 852/             /430.6.2/2022</p>
+                        <p class="text-center">Nomor : 852/             /430.10.1/2022</p>
                     </div>
                 </div>
                 <div class="content">
@@ -121,21 +121,21 @@
                             disetorkan pada kas  negara.
                         </li class="pb-2">
                     </ol>
-                    <p>Demikian Surat Izin Cuti Besar ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
+                    <p>Demikian Surat Izin Cuti Karena Alasan Penting ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
                 </div>
                 <div class="content-ttd my-4">
                     <div class="d-flex justify-content-end">
                         <div class="">
                             <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
                             <div class="kolom-ttd">
-                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">An. BUPATI BONDOWOSO</h4>
-                                <h5 class="fw-bold text-center" style="font-size: 14px;">Sekretaris Daerah</h5>
+                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA</h4>
+                                <h4 class="fw-bold text-center" style="font-size: 14px;">KABUPATEN BONDOWOSO,</h4>
                                 <div class="py-4"></div>
                                 <h4 class="fw-bold text-center " style="font-size: 14px;">
-                                    <u>Drs. BAMBANG SOEKWANTO, M.M</u>
+                                    <u>MUHAMMAD ASNAWI SABIL, S.Ag., M.Si.</u>
                                 </h4>
                                 <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4>
-                                <h4 class="fw-bold text-center" style="font-size: 14px;">NIP.  196604051995031001</h4>
+                                <h4 class="fw-bold text-center" style="font-size: 14px;">NIP.  197802122006041022</h4>
                             </div>
                         </div>
                     </div>
@@ -149,9 +149,7 @@
                         <div class="col-md-9">
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala Badan Pengelolaan Keuangan dan Aset Daerah Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala Dinas Pendidikan Kabupaten Bondowoso di Bondowoso;;</li>
-                                <li>Kepala UPTD Satuan Pendidikan Formal SDN Dadapan 2 Grujugan Kabupaten Bondowoso di Grujugan.</li>
+                                <li>Kepala Dinas Komunikasi dan Informatika Kabupaten Bondowoso di Bondowoso.</li>
                             </ol>
                         </div>
                     </div>
