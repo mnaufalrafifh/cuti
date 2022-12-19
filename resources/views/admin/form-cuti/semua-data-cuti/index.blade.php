@@ -90,24 +90,25 @@
 
                             </td>
                             @if (Auth::user()->id_roles != 3 )
-                            <td class="align-middle">
-                                <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="{{ route('data-cuti.edit', $item->id)}}" class="btn btn-warning"  style="color: white">
-                                        <small>Edit</small>
+                            <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="{{ route('data-cuti.edit', $item->id)}}" class="btn btn-warning btn-sm btn-color btn-bg-color"  style="color: white">
+                                        <i class="bi bi-pencil-square"></i><small>Edit</small>
                                     </a>
+                                <div class="btn-group"></div>
                                     <form action="{{ route('data-cuti.destroy', $item->id)}}" method="POST">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
-                                        Delete</button>
+                                    <button type="submit" class="btn btn-danger btn-sm btn-color btn-bg-color" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Ini ?')">
+                                    <i class="bi bi-trash"></i> Delete</button>
                                     </form>
-                                    <a href="{{ route('download.cuti', $item->id)}}" class="btn btn-info"  style="color: white">
-                                        <small>Download</small>
+                                <div class="btn-group"></div>
+                                    <a href="{{ route('download.cuti', $item->id)}}" class="btn btn-primary btn-sm btn-color btn-bg-color"  style="color: white">
+                                        <i class="bi bi-download"></i><small>Download</small>
                                     </a>
+                            </div>
 
-                                </div>
-
-                                </td>
+                            </td>
                             @else
 
                             @endif
