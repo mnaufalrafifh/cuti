@@ -4,9 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProfileModel;
+use App\Rules\MatchOldPassword;
+use Illuminate\Support\Facades\Hash;
+use App\User;
 
 class ProfileController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +27,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-
+        return view('admin.profile.edit');
     }
 
     /**
@@ -57,8 +70,7 @@ class ProfileController extends Controller
      */
     public function edit($id)
     {
-        $data = ProfileModel::where('id_user',$id)->first();
-        return view('admin.profile.edit',compact('data'));
+        //
     }
 
     /**
@@ -70,16 +82,34 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = ProfileModel::where('id_user',$id)->update([
-            'id_user' => $id,
-            'nik' => $request->get('nik'),
-            'nama_lengkap' => $request->get('nama'),
-            'jenis_kelamin' => $request->get('gender'),
-            'alamat' => $request->get('alamat'),
-            'no_telp' => $request->get('no_telp'),
-            'jabatan' => $request->get('jabatan'),
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required',
+            'confirm_new_password' => 'required'
+        ],
+        [
+            'required' => ':Attribute harus terisi'
+        ],
+        [
+            'old_password' => 'Password Lama',
+            'new_password' => 'Password Baru',
+            'confirm_new_password' => 'Re-Enter Password'
+        ]
+    );
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Password lama tidak sesuai");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
         ]);
-        return redirect()->route('profile.edit',auth()->user()->id)->withStatus('Berhasil mengganti data');
+
+        return back()->with("status", "Password changed successfully!");
     }
 
     /**
