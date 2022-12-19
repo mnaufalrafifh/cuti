@@ -77,11 +77,11 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-2">
                         <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
-                        <p class="text-center">Nomor : 852/             /430.6.2/2022</p>
+                        <p class="text-center">Nomor : 852/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.6.2/2022</p>
                     </div>
                 </div>
                 <div class="content">
-                    <p>Diberikan {{ ($data -> nama_cuti) }} untuk tahun {{ date("Y",strtotime($data->mulai_cuti)) }} kepada Pegawai Negeri Sipil :</p>
+                    <p>Diberikan {{ ($data -> nama_cuti) }} ({{ ($data -> alasan_cuti) }}) untuk tahun {{ date("Y",strtotime($data->mulai_cuti)) }} kepada Pegawai Negeri Sipil :</p>
                     <div class="table-responsive">
                         <table class="">
                             <tbody>
@@ -91,22 +91,22 @@
                                     <td >{{ ($data -> nama_lengkap) }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="20%" class="text-uppercase py-2">nip</td>
+                                    <td width="20%" class="text-uppercase py-1">nip</td>
                                     <td width="1%">:</td>
                                     <td >{{ ($data -> nip) }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="30%" class="py-2">Pangkat / Golongan Ruang</td>
+                                    <td width="30%" class="py-1">Pangkat / Golongan Ruang</td>
                                     <td width="1%">:</td>
                                     <td >{{ ($data -> nama) }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="20%" class="py-2">Jabatan</td>
+                                    <td width="20%" class="py-1">Jabatan</td>
                                     <td width="1%">:</td>
                                     <td >{{ ($data -> jabatan) }}</td>
                                 </tr>
                                 <tr>
-                                    <td width="20%" class="py-2">Satuan Organisasi</td>
+                                    <td width="20%" class="py-1">Satuan Organisasi</td>
                                     <td width="1%">:</td>
                                     <td >{{ ($data -> unit_kerja) }}</td>
                                 </tr>
@@ -150,7 +150,7 @@
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
                                 <li>Kepala Badan Pengelolaan Keuangan dan Aset Daerah Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala Dinas Pendidikan Kabupaten Bondowoso di Bondowoso;;</li>
+                                <li>Kepala Dinas Pendidikan Kabupaten Bondowoso di Bondowoso;</li>
                                 <li>Kepala UPTD Satuan Pendidikan Formal SDN Dadapan 2 Grujugan Kabupaten Bondowoso di Grujugan.</li>
                             </ol>
                         </div>
