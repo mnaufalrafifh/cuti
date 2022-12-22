@@ -150,7 +150,7 @@
                         <div class="col-md-9">
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala Dinas Komunikasi dan Informatika Kabupaten Bondowoso di Bondowoso.</li>
+                                <li>Kepala {{ $data-> unit_kerja }} di Bondowoso.</li>
                             </ol>
                         </div>
                     </div>

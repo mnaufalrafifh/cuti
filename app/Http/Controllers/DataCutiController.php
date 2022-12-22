@@ -229,6 +229,7 @@ class DataCutiController extends Controller
         $answer_in_days = $data->lama_kerja == '5' ? $this->cekLimaHari($data->mulai_cuti, $data->akhir_cuti) : $this->cekHariLibur($data->mulai_cuti, $data->akhir_cuti);
         $terbilang = ucwords($this->terbilang((int) $answer_in_days));
         if ($data->nama_cuti == 'Cuti Tahunan') {
+            return view('cuti_tahunan', compact('data', 'answer_in_days', 'terbilang'));
         }elseif ($data->nama_cuti == 'Cuti Besar') {
             return view('cuti_besar', compact('data', 'answer_in_days','terbilang'));
         }elseif ($data->nama_cuti == 'Cuti Sakit') {
