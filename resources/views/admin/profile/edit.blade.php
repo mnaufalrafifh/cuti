@@ -23,21 +23,21 @@
                             <div class="col my-4">
                                 <div class="col mb-3">
                                     <small for="old-password" class="form-label">Password Lama</small>
-                                    <input type="password" class="form-control" name="old-password" id="old-password" placeholder="Password Lama">
+                                    <input type="password" class="form-control" name="old_password" id="old-password" placeholder="Password Lama">
                                     @error('old_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col mb-3">
                                     <small for="new-password" class="form-label">Password Baru</small>
-                                    <input type="password" class="form-control" name="new-password" id="new-password" placeholder="Password Baru">
+                                    <input type="password" class="form-control" name="new_password" id="new-password" placeholder="Password Baru">
                                     @error('new_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="col mb-3">
                                     <small for="confirm-new-password" class="form-label">Re-Enter Password</small>
-                                    <input type="password" class="form-control" name="confirm-new-password" id="confirm-new-password" placeholder="Re-Enter Password Baru">
+                                    <input type="password" class="form-control" name="confirm_new_password" id="confirm-new-password" placeholder="Re-Enter Password Baru">
                                     @error('confirm_new_password')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

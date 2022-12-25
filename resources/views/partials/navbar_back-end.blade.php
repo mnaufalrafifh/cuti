@@ -31,7 +31,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{ route('ganti-password.index',Auth::user()->id) }}">
+              <a class="dropdown-item d-flex align-items-center" href="{{ route('ganti-password.edit',Auth::user()->id) }}">
                 <i class="bi bi-key"></i>
                 <span>Ganti Password</span>
               </a>

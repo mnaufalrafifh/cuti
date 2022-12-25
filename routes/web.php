@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('status/{id}',[DataCutiController::class,'status'])->name('status.cuti');
     Route::resource('/data-cuti', DataCutiController::class);
 
-    Route::get('/ganti-password', [Profile::class, 'ganti-password']);
+    Route::get('/ganti-password/{id}', [Profile::class, 'ganti-password']);
     Route::resource('/ganti-password', ProfileController::class);
 });
 require __DIR__.'/auth.php';
