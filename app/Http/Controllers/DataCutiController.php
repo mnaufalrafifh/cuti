@@ -114,11 +114,11 @@ class DataCutiController extends Controller
                 'akhir_cuti' => 'required',
                 'alamat_cuti' => 'required',
                 'no_telp' => 'required',
-                'upload_file' => 'mimes:png,jpg,jpeg'
+                'upload_file' => 'mimes:pdf'
             ],
             [
                 'required' => ':Attribute harus terisi',
-                'mimes' => ':Attribute harus berupa jpg,jpeg, atau png'
+                'mimes' => ':Attribute harus berupa pdf'
             ],
             [
                 'nip' => 'NIP',

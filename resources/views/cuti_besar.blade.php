@@ -115,10 +115,16 @@
                     </div>
                     <p>Selama {{ $answer_in_days }} ( {{ $terbilang }} ) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
-                        <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
-                        <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa;</li>
-                        <li>Tunjangan jabatan fungsional/struktural/umum dihentikan untuk bulan Juli 2022, dan
-                            disetorkan pada kas  negara.
+                        @if ($answer_in_days <= 15)
+                            <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
+                            <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa;</li>
+
+                        @else
+                            <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
+                            <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa;</li>
+                            <li>Tunjangan jabatan fungsional/struktural/umum dihentikan untuk bulan Juli 2022, dan
+                                disetorkan pada kas  negara.
+                        @endif
                         </li class="pb-2">
                     </ol>
                     <p>Demikian Surat Izin Cuti Besar ini dibuat untuk dipergunakan sebagaimana mestinya.</p>
@@ -149,7 +155,7 @@
                         <div class="col-md-9">
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala {{ $data -> unit_kerja }} di Grujugan.</li>
+                                <li>Kepala {{ $data -> unit_kerja }}</li>
                             </ol>
                         </div>
                     </div>
