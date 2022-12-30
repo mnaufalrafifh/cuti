@@ -62,7 +62,7 @@ class TambahAkunController extends Controller
             $tambahData->password = Hash::make($request->get('password'));
             $tambahData->id_roles = $request->get('id_roles');
             $tambahData->save();
-            return redirect()->back()->withStatus('Berhasil Menambahkan Data');
+            return redirect()->route('data-akun.index')->withStatus('Berhasil Menambahkan Data');
         } catch (Exception $e) {
             return redirect()->back()->withError('Terjadi Kesalahan');
         }

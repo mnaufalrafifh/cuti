@@ -32,14 +32,14 @@
           <div class="card">
             <div class="card-body">
              <h5 class="card-title"></h5>
-             <form class="form-validate form-horizontal" method="POST" action="" enctype="multipart/form-data" autocomplete="off">
+             <form class="form-validate form-horizontal" method="POST" action="{{ route('data-akun.update', $data->id) }}" enctype="multipart/form-data" autocomplete="off">
             @method('PUT')
             @csrf
              <div class="row">
                  <div class="form-group">
                      <label for="name" class="control-label col-lg-4"><strong>Nama Lengkap</strong> <span class="required"></span></label>
                      <div class="col">
-                         <input type="text" name="name" id="name" placeholder="Masukkan Nama Lengkap" class="form-control mt-1" @error('name') is-invalid @enderror autocomplete="off">
+                         <input type="text" name="name" id="name" value="{{ old('name', $data->name) }}" class="form-control mt-1" @error('name') is-invalid @enderror autocomplete="off">
                         </div>
               @error('name')
               <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -61,7 +61,7 @@
             <div class="form-group mt-3">
                 <label for="email" class="control-label col-lg-2"><strong>Email</strong> <span class="required"></span></label>
             <div class="col">
-                <input type="email" name="email" id="email" placeholder="Masukkan Email" class="form-control mt-1" @error('email') is-invalid @enderror autocomplete="off">
+                <input type="email" name="email" id="email" value="{{ old('name', $data->email) }}" class="form-control mt-1" @error('email') is-invalid @enderror autocomplete="off">
             </div>
             @error('email')
              <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -71,7 +71,7 @@
             <div class="form-group mt-3">
                 <label for="password" class="control-label col-lg-4"><strong>Password</strong> <span class="required"></span></label>
                 <div class="col">
-                    <input type="password" name="password" id="myInput" placeholder="Masukkan Password" class="form-control mt-1" @error('password') is-invalid @enderror autocomplete="off">
+                    <input type="password" name="password" id="myInput" placeholder="Masukkan Password Baru" class="form-control mt-1" @error('password') is-invalid @enderror autocomplete="off">
                 </div>
                 @error('password')
                 <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -81,10 +81,10 @@
             <i class="ri ri-eye-line d-flex justify-content-end" onclick="myFunction()"></i>
             <div class="form-group mt-3">
                 <label for="id_roles" id class="control-label col-lg-4 mt-1"><strong>Level Akun</strong> <span class="required"></span></label>
-                <select name="id_roles" class="form-control" @error('jenis_kelamin') is-invalid @enderror id="jenis">
+                <select name="id_roles" class="form-control" @error('id_roles') is-invalid @enderror id="id_roles">
                     <option value="">Pilih Level Akun</option>
                     @foreach($role as $item)
-                    <option value="{{ $item->id }}">{{ $item->nama_role }}</option>
+                    <option value="{{ $item->id}}" {{ $item->id == $data->id_roles ? 'selected' : ''}}>{{ $item->nama_role}}</option>
                     @endforeach
                 </select>
                 @error('id_roles')
@@ -97,7 +97,7 @@
     </div>
 </div>
   <div class="col">
-    {{-- <td><a class="btn btn-danger mt-2" href="/jenis-cuti">Kembali</a></td> --}}
+    <td><a class="btn btn-danger mt-2" href="/data-akun">Kembali</a></td>
     <button type="submit" class="btn btn-primary mt-2">Simpan</button>
   </div>
 </form>
