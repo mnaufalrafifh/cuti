@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cetak Surat</title>
     <!-- bootstrap css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- fontawesome  -->
@@ -25,11 +25,14 @@
             -moz-box-sizing: border-box;
         }
         p, table, ol{
-            font-size: 9pt;
+            font-size: 13.5pt;
         }
         @page {
             size: A4;
-            margin: 0;
+            margin-top: 0;
+            margin-left: 75px;
+            margin-bottom: 0;
+            margin-right: 75px;
         }
         @media print {
             * {
@@ -55,14 +58,14 @@
                     <div class="align-self-center p-0 ">
                         <div class="row">
                             <div class="col-md-12 me-auto ">
-                                <h1 class="text-center p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
+                                <h1 class="text-center p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
                                 </h1>
-                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">
+                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">
                                     BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA
                                 </h1>
                                 <h5 class="text-center p-0 m-0" style="font-size: 16px">Jl. KH. Ashari 123 <i></i>( 0332 )  429584</h5>
                                 <div>
-                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 14px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
                                 </div>
                                 <h1 class="text-center fw-bold mt-2" style="font-size: 20px">B O N D O W O S O</h1>
                             </div>
@@ -142,7 +145,7 @@
                     </div>
                 </div>
                 <div class="content-tembusan">
-                    <h5 style="font-size: 10pt">Tembusan :</h5>
+                    <h5 style="font-size: 14pt">Tembusan :</h5>
                     <div class="row">
                         <div class="col-md-1">
                             <p>Yth. Sdr.</p>

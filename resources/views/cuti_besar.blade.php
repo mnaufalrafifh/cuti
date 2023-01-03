@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cetak Surat</title>
     <!-- bootstrap css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- fontawesome  -->
@@ -25,11 +25,14 @@
             -moz-box-sizing: border-box;
         }
         p, table, ol{
-            font-size: 9pt;
+            font-size: 13.5pt;
         }
         @page {
             size: A4;
-            margin: 0;
+            margin-top: 0;
+            margin-left: 75px;
+            margin-bottom: 0;
+            margin-right: 75px;
         }
         @media print {
             * {
@@ -55,14 +58,14 @@
                     <div class="align-self-center p-0 ">
                         <div class="row">
                             <div class="col-md-12 me-auto ">
-                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
+                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
                                     SEKRETARIAT DAERAH
                                 </h1>
                                 <h5 class="text-center p-0 m-0" style="font-size: 16px">Jalan Letnan Amir Kusman Nomor 2 <i></i>( 0332 )  421153</h5>
                                 <div>
-                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 14px">e-mail: <u>admin@bondowosokab.go.id</u>, Website: http://www.bondowosokab.go.id</p>
                                 </div>
-                                <h1 class="text-center fw-bold mt-2" style="font-size: 12px">B O N D O W O S O</h1>
+                                <h1 class="text-center fw-bold mt-2" style="font-size: 20px">B O N D O W O S O</h1>
                             </div>
                         </div>
                         <div>
@@ -113,7 +116,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Selama {{ $answer_in_days }} ( {{ $terbilang }} ) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
+                    <p>Selama {{ $answer_in_days }} ( {{ $terbilang }} ) hari kerja terhitung sejak tanggal {{date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
                         @if ($answer_in_days <= 15)
                             <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
@@ -147,7 +150,7 @@
                     </div>
                 </div>
                 <div class="content-tembusan">
-                    <h5 style="font-size: 10pt">Tembusan :</h5>
+                    <h5 style="font-size: 14pt">Tembusan :</h5>
                     <div class="row">
                         <div class="col-md-1">
                             <p>Yth. Sdr.</p>

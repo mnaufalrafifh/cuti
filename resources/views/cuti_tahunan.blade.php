@@ -25,11 +25,14 @@
             -moz-box-sizing: border-box;
         }
         p, table, ol{
-            font-size: 9pt;
+            font-size: 13.5pt;
         }
         @page {
             size: A4;
-            margin: 0;
+            margin-top: 0;
+            margin-left: 75px;
+            margin-bottom: 0;
+            margin-right: 75px;
         }
         @media print {
             * {
@@ -55,14 +58,14 @@
                     <div class="align-self-center p-0 ">
                         <div class="row">
                             <div class="col-md-12 me-auto ">
-                                <h1 class="text-center p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
+                                <h1 class="text-center p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
                                 </h1>
-                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 20px; letter-spacing: 0.4ch">
+                                <h1 class="text-center fw-bold p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">
                                     {{ $data -> unit_kerja}}
                                 </h1>
                                 <h5 class="text-center p-0 m-0" style="font-size: 16px">Jl. KH. Ashari 123 <i></i>( 0332 )  429584</h5>
                                 <div>
-                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 14px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
                                 </div>
                                 <h1 class="text-center fw-bold mt-2" style="font-size: 20px">B O N D O W O S O</h1>
                             </div>
@@ -128,20 +131,20 @@
                         <div class="">
                             <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
                             <div class="kolom-ttd">
-                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA {{ $data -> unit_kerja}}</h4>
+                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA &nbsp;{{ $data -> unit_kerja}}</h4>
                                 <h4 class="fw-bold text-center" style="font-size: 14px;">KABUPATEN BONDOWOSO,</h4>
                                 <div class="py-4"></div>
                                 <h4 class="fw-bold text-center " style="font-size: 14px;">
-                                    <u>MUHAMMAD ASNAWI SABIL, S.Ag., M.Si.</u>
+                                    <u>(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</u>
                                 </h4>
-                                <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4>
-                                <h4 class="fw-bold text-center" style="font-size: 14px;">NIP.  197802122006041022</h4>
+                                {{-- <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4> --}}
+                                <h4 class="fw-bold px-4" style="font-size: 14px;">NIP.  </h4>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="content-tembusan">
-                    <h5 style="font-size: 10pt">Tembusan :</h5>
+                    <h5 style="font-size: 14pt">Tembusan :</h5>
                     <div class="row">
                         <div class="col-md-1">
                             <p>Yth. Sdr.</p>
@@ -149,7 +152,7 @@
                         <div class="col-md-9">
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala {{ $data -> unit_kerja }} di Bondowoso;</li>
+                                <li>Kepala {{ $data -> unit_kerja }}</li>
                             </ol>
                         </div>
                     </div>

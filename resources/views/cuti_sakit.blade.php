@@ -25,11 +25,14 @@
             -moz-box-sizing: border-box;
         }
         p, table, ol{
-            font-size: 9pt;
+            font-size: 13.5pt;
         }
         @page {
             size: A4;
-            margin: 0;
+            margin-top: 0;
+            margin-left: 75px;
+            margin-bottom: 0;
+            margin-right: 75px;
         }
         @media print {
             * {
@@ -62,7 +65,7 @@
                                 </h1>
                                 <h5 class="text-center p-0 m-0" style="font-size: 16px">Jl. KH. Ashari 123 <i></i>( 0332 )  429584</h5>
                                 <div>
-                                    <p class="text-center p-0 m-0" style="font-size: 10px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
+                                    <p class="text-center p-0 m-0" style="font-size: 14px">e-mail: <u>admin@bkpsdm.bondowosokab.go.id</u>, Website: http://www.bkpsdm.bondowosokab.go.id</p>
                                 </div>
                                 <h1 class="text-center fw-bold mt-2" style="font-size: 20px">B O N D O W O S O</h1>
                             </div>
@@ -142,7 +145,7 @@
                     </div>
                 </div>
                 <div class="content-tembusan">
-                    <h5 style="font-size: 10pt">Tembusan :</h5>
+                    <h5 style="font-size: 14pt">Tembusan :</h5>
                     <div class="row">
                         <div class="col-md-1">
                             <p>Yth. Sdr.</p>
