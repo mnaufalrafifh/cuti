@@ -182,14 +182,14 @@ class CutiController extends DataCutiController
         //
     }
 
-    public function autocompleteSearch(Request $request)
+    public function autocompleteSearch($nip)
     {
         // $client = new Client();
         // $res = $client->request('GET',env('SIMPEG_URL') . 'api/pegawai_simpeg/');
         // return $res;
         // return response()->json(['data' => $res]);
         $client = new Client;
-        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/' . $request->get('query'), [
+        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/' . $nip, [
             'query' => [
                 'api_key' => env('BILLING_API_KEY'),
             ]

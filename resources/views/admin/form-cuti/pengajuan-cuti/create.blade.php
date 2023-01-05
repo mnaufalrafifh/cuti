@@ -48,22 +48,52 @@
 @endpush
 @push('js')
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+{{-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --}}
 <script type="text/javascript">
     $('#nip').select2();
 
     $('#nip').on('change', function() {
         var nip = $(this).val();
         $.ajax({
-            url:,
+            url: `pengajuan-cuti/autocomplete/${nip}`,
             method:"get",
-            success:function () {
+            success:function (res) {
+                res.forEach(element => {
+                    console.log(element);
+                    $("input[name='nama_lengkap']").val(element.nama_lengkap);
+                    if (element.jenis_kelamin == "L") {
+                        $('#jenis_kelamin option').attr('disabled', true);
+                    } else {
+                        $('#jenis_kelamin option').attr('disabled', true);
+
+                    }
+                    $("input[name='jabatan']").val(element.jabatan);
+                })
 
             }
         })
     })
+    // var path = "{{ url('pengajuan-cuti') }}";
+    // $('#nip').typeahead({
+    //     source:  function (query, process) {
+    //     return $.get(path, { query: query }, function (data) {
+    //             return process(data);
+    //         });
+    //     }
+    // });
+    function GetDays(){
+            var dropdt = new Date(document.getElementById("drop_date").value);
+            var pickdt = new Date(document.getElementById("pick_date").value);
+            return parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
+    }
+
+    function cal(){
+    if(document.getElementById("drop_date")){
+        document.getElementById("numdays2").value=GetDays();
+        }
+    }
 </script>
 @endpush
 @section('content')
@@ -99,7 +129,7 @@
                     <div class="form-group col-md-6">
                         <label for="nip" class="control-label col-lg-2"><strong>NIP</strong> <span class="required"></span></label>
                     <div class="col my-1">
-                        {{-- <input class="typeahead form-control" id="search" type="text"> --}}
+                        {{-- <input class="typeahead form-control" id="nip" type="text"> --}}
                         <select name="nip" id="nip"  class="form-control">
                             <option value="0">Cari NIP anda...</option>
                             @foreach ($data_pegawai as $item)
