@@ -1,6 +1,15 @@
 @extends('layouts.template_back-end')
 @push('js')
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
 <script type="text/javascript">
+    $('#search').typeahead({
+        source:  function (query, process) {
+        return $.get(path, { query: query }, function (data) {
+                return process(data);
+            });
+        }
+    });
     function GetDays(){
             var dropdt = new Date(document.getElementById("drop_date").value);
             var pickdt = new Date(document.getElementById("pick_date").value);
@@ -10,8 +19,9 @@
     function cal(){
     if(document.getElementById("drop_date")){
         document.getElementById("numdays2").value=GetDays();
+        }
     }
-}
+    var path = "{{ url('pengajuan-cuti/autocomplete') }}";
 </script>
 @endpush
 @section('content')
@@ -47,7 +57,8 @@
                     <div class="form-group col-md-6">
                         <label for="nip" class="control-label col-lg-2"><strong>NIP</strong> <span class="required"></span></label>
                     <div class="col">
-                        <input class="form-control mt-1" id="nip" name="nip" minlength="5" placeholder="Masukkan NIP" type="number" @error('nip') is-invalid @enderror/>
+                        <input class="typeahead form-control" id="search" type="text">
+                        {{-- <input class="form-control mt-1" id="nip"  name="nip" minlength="5" placeholder="Masukkan NIP" type="number" @error('nip') is-invalid @enderror/> --}}
                     </div>
                     @error('nip')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>

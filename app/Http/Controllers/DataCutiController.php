@@ -12,6 +12,7 @@ use DateInterval;
 use DatePeriod;
 use DateTime;
 use Exception;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use PDF;
 
@@ -171,7 +172,7 @@ class DataCutiController extends Controller
             }
             $updateDataC->update();
             return redirect()->route('data-cuti.index')->withStatus('Berhasil Merubah Data');
-        } catch (Exception $e) {
+        } catch (QueryException $e) {
             return redirect()->back()->withError('Terjadi Kesalahan');
         }
     }

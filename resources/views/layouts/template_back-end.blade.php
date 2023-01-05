@@ -79,12 +79,12 @@
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
   <script src="{{ asset('') }}back-end/assets/js/main.js"></script>
-  <script>
+  @stack('js')
+  {{-- <script>
     $(document).ready(function () {
     $('#example').DataTable();
 });
-  </script>
-    @stack('js')
+  </script> --}}
 </body>
 
 </html>

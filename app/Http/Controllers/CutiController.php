@@ -8,6 +8,8 @@ use App\Models\CutiModel;
 use App\Models\JenisCutiModel;
 use App\Models\PegawaiModel;
 use Exception;
+use GuzzleHttp\Client;
+use GuzzleHttp\RetryMiddleware;
 use Illuminate\Support\Facades\Auth;
 
 class CutiController extends DataCutiController
@@ -165,5 +167,24 @@ class CutiController extends DataCutiController
     public function destroy($id)
     {
         //
+    }
+
+    public function autocompleteSearch(Request $request)
+    {
+        // $client = new Client();
+        // $res = $client->request('GET',env('SIMPEG_URL') . 'api/pegawai_simpeg/');
+        // return $res;
+        // return response()->json(['data' => $res]);
+        $client = new Client;
+        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/' . $request->get('query'), [
+            'query' => [
+                'api_key' => env('BILLING_API_KEY'),
+            ]
+        ]);
+
+        $body = (string) $res->getBody();
+        $body = json_decode($body, true);
+        $data =  collect($body)->all();
+        return $data;
     }
 }

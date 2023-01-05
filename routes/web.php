@@ -28,6 +28,7 @@ use App\Http\Controllers\DataAkunController;
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('pengajuan-cuti/autocomplete',[CutiController::class,'autocompleteSearch'])->name('autocomplete');
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', ProfileController::class);
