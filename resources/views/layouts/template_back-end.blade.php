@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
   <link href="{{ asset('') }}back-end/assets/css/style.css" rel="stylesheet">
 
-
+    @stack('css')
   <!-- =======================================================
   * Template Name: NiceAdmin - v2.4.1
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/

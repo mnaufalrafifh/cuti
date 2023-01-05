@@ -25,7 +25,18 @@ class CutiController extends DataCutiController
         ->get();
         $jenis = JenisCutiModel::all();
 
-        return view('admin.form-cuti.pengajuan-cuti.create', compact('data','jenis'));
+        $client = new Client;
+        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/', [
+            'query' => [
+                'api_key' => env('BILLING_API_KEY'),
+            ]
+        ]);
+
+        $body = (string) $res->getBody();
+        $body = json_decode($body, true);
+        $data_pegawai =  collect($body)->all();
+
+        return view('admin.form-cuti.pengajuan-cuti.create', compact('data','jenis','data_pegawai'));
     }
 
     /**

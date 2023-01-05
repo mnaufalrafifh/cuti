@@ -1,27 +1,69 @@
 @extends('layouts.template_back-end')
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        .select2-container {
+            width: 100% !important;
+
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: 0.35rem;
+            border: 1px solid #d1d3e2;
+            height: calc(1.95rem + 5px);
+            background: #fff;
+        }
+
+        .select2-container--default .select2-selection--single:hover,
+        .select2-container--default .select2-selection--single:focus,
+        .select2-container--default .select2-selection--single.active {
+            box-shadow: none;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 32px;
+
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            border-color: #eaeaea;
+            border-radius: 0;
+        }
+
+        .select2-dropdown {
+            border-radius: 0;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #3838eb;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border-color: #eaeaea;
+            background: #fff;
+
+        }
+    </style>
+@endpush
 @push('js')
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script type="text/javascript">
-    $('#search').typeahead({
-        source:  function (query, process) {
-        return $.get(path, { query: query }, function (data) {
-                return process(data);
-            });
-        }
-    });
-    function GetDays(){
-            var dropdt = new Date(document.getElementById("drop_date").value);
-            var pickdt = new Date(document.getElementById("pick_date").value);
-            return parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
-    }
+    $('#nip').select2();
 
-    function cal(){
-    if(document.getElementById("drop_date")){
-        document.getElementById("numdays2").value=GetDays();
-        }
-    }
-    var path = "{{ url('pengajuan-cuti/autocomplete') }}";
+    $('#nip').on('change', function() {
+        var nip = $(this).val();
+        $.ajax({
+            url:,
+            method:"get",
+            success:function () {
+
+            }
+        })
+    })
 </script>
 @endpush
 @section('content')
@@ -56,8 +98,14 @@
                     <div class="row">
                     <div class="form-group col-md-6">
                         <label for="nip" class="control-label col-lg-2"><strong>NIP</strong> <span class="required"></span></label>
-                    <div class="col">
-                        <input class="typeahead form-control" id="search" type="text">
+                    <div class="col my-1">
+                        {{-- <input class="typeahead form-control" id="search" type="text"> --}}
+                        <select name="nip" id="nip"  class="form-control">
+                            <option value="0">Cari NIP anda...</option>
+                            @foreach ($data_pegawai as $item)
+                            <option value="{{ $item['nip'] }}"  >{{ $item['nip'] }}</option>
+                            @endforeach
+                        </select>
                         {{-- <input class="form-control mt-1" id="nip"  name="nip" minlength="5" placeholder="Masukkan NIP" type="number" @error('nip') is-invalid @enderror/> --}}
                     </div>
                     @error('nip')
