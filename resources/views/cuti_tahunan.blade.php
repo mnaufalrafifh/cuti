@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cetak Surat</title>
+    <title>Document</title>
     <!-- bootstrap css-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- fontawesome  -->
@@ -61,7 +61,7 @@
                                 <h1 class="text-center p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">PEMERINTAH KABUPATEN BONDOWOSO <br>
                                 </h1>
                                 <h1 class="text-center fw-bold p-0 m-0" style="font-size: 18px; letter-spacing: 0.4ch">
-                                    BADAN KEPEGAWAIAN DAN PENGEMBANGAN SUMBER DAYA MANUSIA
+                                    {{ $data -> unit_kerja}}
                                 </h1>
                                 <h5 class="text-center p-0 m-0" style="font-size: 16px">Jl. KH. Ashari 123 <i></i>( 0332 )  429584</h5>
                                 <div>
@@ -82,7 +82,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-2">
                         <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
-                        <p class="text-center">Nomor : 852/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.6.2/2022</p>
+                        <p class="text-center">Nomor : 851/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.10.1/2022</p>
                     </div>
                 </div>
                 <div class="content">
@@ -131,15 +131,14 @@
                         <div class="">
                             <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
                             <div class="kolom-ttd">
-                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA BADAN KEPEGAWAIAN DAN</h4>
-                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;"> PENGEMBANGAN SUMBER DAYA MANUSIA</h4>
+                                <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA &nbsp;{{ $data -> unit_kerja}}</h4>
                                 <h4 class="fw-bold text-center" style="font-size: 14px;">KABUPATEN BONDOWOSO,</h4>
                                 <div class="py-4"></div>
                                 <h4 class="fw-bold text-center " style="font-size: 14px;">
-                                    <u>MUHAMMAD ASNAWI SABIL, S.Ag., M.Si.</u>
+                                    <u>(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; )</u>
                                 </h4>
-                                <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4>
-                                <h4 class="fw-bold text-center" style="font-size: 14px;">NIP.  197802122006041022</h4>
+                                {{-- <h4 class="fw-bold text-center" style="font-size: 14px;">Pembina Utama Madya</h4> --}}
+                                <h4 class="fw-bold px-4" style="font-size: 14px;">NIP.  </h4>
                             </div>
                         </div>
                     </div>
@@ -153,7 +152,7 @@
                         <div class="col-md-9">
                             <ol>
                                 <li>Inspektur Kabupaten Bondowoso di Bondowoso;</li>
-                                <li>Kepala {{ $data-> unit_kerja }} di Bondowoso;</li>
+                                <li>Kepala {{ $data -> unit_kerja }}</li>
                             </ol>
                         </div>
                     </div>

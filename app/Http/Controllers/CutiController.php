@@ -56,6 +56,7 @@ class CutiController extends DataCutiController
                 'masa_kerja' => 'required',
                 'id_jenisCuti' => 'required',
                 'alasan_cuti' => 'required',
+                'jamKerja' => 'required',
                 'mulai_cuti' => 'required',
                 'akhir_cuti' => 'required',
                 'alamat_cuti' => 'required',
@@ -75,6 +76,7 @@ class CutiController extends DataCutiController
                 'masa_kerja' => 'Masa Kerja',
                 'id_jenisCuti' => 'Jenis Cuti',
                 'alasan_cuti' => 'Alasan Cuti',
+                'jamKerja' => 'Jam Kerja',
                 'mulai_cuti' => 'Mulai Cuti',
                 'akhir_cuti' => 'Akhir Cuti',
                 'alamat_cuti' => 'Alamat Cuti',
@@ -109,7 +111,7 @@ class CutiController extends DataCutiController
             $tambahDataC->mulai_cuti = $request->get('mulai_cuti');
             $tambahDataC->akhir_cuti = $request->get('akhir_cuti');
             $tambahDataC->lama_cuti = $request->get('jamKerja') == '5' ? $this->cekLimaHari($request->get('mulai_cuti'), $request->get('akhir_cuti')) : $this->cekHariLibur($request->get('mulai_cuti'), $request->get('akhir_cuti'));
-            $tambahDataC->jam_kerja = $request->get('jamKerja');
+            $tambahDataC->lama_kerja = $request->get('jamKerja');
             $tambahDataC->id_pegawai = $tambahDataP->id;
             $tambahDataC->alamat_cuti = $request->get('alamat_cuti');
             $tambahDataC->no_telp = $request->get('no_telp');

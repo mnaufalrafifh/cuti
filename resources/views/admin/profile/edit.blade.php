@@ -3,7 +3,7 @@
     <section class="wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3>Edit Profil</h3>
+                <h3>Ganti Password</h3>
             </div>
         </div>
         <div class="row">
@@ -17,36 +17,30 @@
                                 </div>
                             </div>
                         @endif
-                        <form action="{{route('profile.update',Auth::user()->id)}}" method="POST">
+                        <form action="{{route('ganti-password.update',Auth::user()->id)}}" method="POST">
                             @method('PUT')
                             @csrf
-                            <div class="row my-4">
-                                <div class="col-md-6 mb-3">
-                                    <small for="exampleFormControlInput1" class="form-label">NIK</small>
-                                    <input type="text" class="form-control" value="{{!empty($data->nik) ? old('nik',$data->nik) : ''}}" name="nik" id="exampleFormControlInput1" placeholder="Masukkan NIK">
+                            <div class="col my-4">
+                                <div class="col mb-3">
+                                    <small for="old-password" class="form-label">Password Lama</small>
+                                    <input type="password" class="form-control" name="old_password" id="old-password" placeholder="Password Lama">
+                                    @error('old_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <small for="exampleFormControlInput1" class="form-label">Nama Lengkap</small>
-                                    <input type="text" class="form-control" value="{{ !empty($data->nama_lengkap) ? old('nama',$data->nama_lengkap) : ''}}" name="nama" id="exampleFormControlInput1" placeholder="Isi disini...">
+                                <div class="col mb-3">
+                                    <small for="new-password" class="form-label">Password Baru</small>
+                                    <input type="password" class="form-control" name="new_password" id="new-password" placeholder="Password Baru">
+                                    @error('new_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
-                                <div class="col-md-6 mb-3">
-                                    <small for="exampleFormControlInput1" class="form-label">Jenis Kelamin</small>
-                                    <select name="gender" id="" class="form-control">
-                                        <option value="L" {{!empty($data->jenis_kelamin) ? old('gender',$data->jenis_kelamin == 'L' ? 'selected' : '' ) : ''}}>Laki-laki</option>
-                                        <option value="P" {{ !empty($data->jenis_kelamin) ?  old('gender',$data->jenis_kelamin == 'P' ? 'selected' : '' ) : ''}}>Perempuan</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <small for="exampleFormControlInput1" class="form-label">No Telp</small>
-                                    <input type="text" class="form-control" value="{{!empty($data->nik) ? old('no_telp',$data->no_telp) : ''}}" name="no_telp" id="exampleFormControlInput1" placeholder="Isi disini...">
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <small class="form-label">Alamat</small>
-                                    <textarea name="alamat" id="" cols="30" rows="4" class="form-control">{{ !empty($data->alamat) ? old('alamat',$data->alamat) : ''}}</textarea>
-                                </div>
-                                <div class="col-md-12 mb-3">
-                                    <small class="form-label">Jabatan</small>
-                                    <textarea name="jabatan" id="" cols="30" rows="4" class="form-control">{{ !empty($data->nik) ? old('jabatan',$data->jabatan) : ''}}</textarea>
+                                <div class="col mb-3">
+                                    <small for="confirm-new-password" class="form-label">Re-Enter Password</small>
+                                    <input type="password" class="form-control" name="confirm_new_password" id="confirm-new-password" placeholder="Re-Enter Password Baru">
+                                    @error('confirm_new_password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div>

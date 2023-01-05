@@ -115,11 +115,11 @@ class DataCutiController extends Controller
                 'akhir_cuti' => 'required',
                 'alamat_cuti' => 'required',
                 'no_telp' => 'required',
-                'upload_file' => 'mimes:png,jpg,jpeg'
+                'upload_file' => 'mimes:pdf'
             ],
             [
                 'required' => ':Attribute harus terisi',
-                'mimes' => ':Attribute harus berupa jpg,jpeg, atau png'
+                'mimes' => ':Attribute harus berupa pdf'
             ],
             [
                 'nip' => 'NIP',
@@ -230,6 +230,7 @@ class DataCutiController extends Controller
         $answer_in_days = $data->lama_kerja == '5' ? $this->cekLimaHari($data->mulai_cuti, $data->akhir_cuti) : $this->cekHariLibur($data->mulai_cuti, $data->akhir_cuti);
         $terbilang = ucwords($this->terbilang((int) $answer_in_days));
         if ($data->nama_cuti == 'Cuti Tahunan') {
+            return view('cuti_tahunan', compact('data', 'answer_in_days', 'terbilang'));
         }elseif ($data->nama_cuti == 'Cuti Besar') {
             return view('cuti_besar', compact('data', 'answer_in_days','terbilang'));
         }elseif ($data->nama_cuti == 'Cuti Sakit') {
@@ -325,6 +326,25 @@ class DataCutiController extends Controller
           $start = strtotime("+1 day", $start);
         }
         return $count;
+    }
+
+    public function tanggal_indo($tanggal)
+    {
+        $bulan = array (1 =>   'Januari',
+                    'Februari',
+                    'Maret',
+                    'April',
+                    'Mei',
+                    'Juni',
+                    'Juli',
+                    'Agustus',
+                    'September',
+                    'Oktober',
+                    'November',
+                    'Desember'
+                );
+        $split = explode('-', $tanggal);
+        return $split[2] . ' ' . $bulan[ (int)$split[1] ] . ' ' . $split[0];
     }
 
 }

@@ -31,7 +31,6 @@ use App\Http\Controllers\DataAkunController;
 Route::get('pengajuan-cuti/autocomplete',[CutiController::class,'autocompleteSearch'])->name('autocomplete');
 Route::middleware(['auth'])->group(function () {
 
-    Route::resource('profile', ProfileController::class);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 
     Route::get('/jenis-cuti', [JenisCuti::class, 'jenis-cuti']);
@@ -51,5 +50,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-status/{id}',[DataCutiController::class,'UpdateStatus'])->name('updates.cuti');
     Route::get('status/{id}',[DataCutiController::class,'status'])->name('status.cuti');
     Route::resource('/data-cuti', DataCutiController::class);
+
+    Route::get('/ganti-password/{id}', [Profile::class, 'ganti-password']);
+    Route::resource('/ganti-password', ProfileController::class);
 });
 require __DIR__.'/auth.php';

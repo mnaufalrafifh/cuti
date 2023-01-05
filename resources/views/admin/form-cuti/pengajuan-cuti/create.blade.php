@@ -158,12 +158,16 @@
                     <div class="form-group col-md-12">
                     <label for="jamKerja" class="control-label col-lg-2"><strong>Jam Kerja</strong> <span class="required"></span></label>
                         <div class="col">
-                            <select name="jamKerja" id="jenisCuti" class="form-control mt-1" required>
+                            <select name="jamKerja" id="jamKerja" class="form-control mt-1" required>
                                 <option value="">Pilih Jam Kerja</option>
                                 <option value="5">5 Hari</option>
                                 <option value="6">6 Hari</option>
                             </select>
                         </div>
+                        @error('jamKerja')
+                        <small class="text-danger ml-4" for="">{{ $message }}</small>
+                        <br>
+                       @enderror
                     </div>
                    <div class="form-group col-md-3 mt-3">
                       <label for="pick_date" class="control-label col-lg-6"><strong>Mulai Cuti</strong> <span class="required"></span></label>

@@ -31,10 +31,10 @@
                           <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col" style="width:50px">No</th>
-                                <th scope="col" style="width:500px">Jenis Cuti</th>
-                                <th scope="col" style="width:180px">Lama Cuti</th>
-                                <th scope="col" >Aksi</th>
+                                <th scope="" >No</th>
+                                <th scope="" >Jenis Cuti</th>
+                                <th scope="" >Lama Cuti</th>
+                                <th scope="">Aksi</th>
                               </tr>
                             </thead>
                             <tbody>
