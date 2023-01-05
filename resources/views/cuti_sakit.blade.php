@@ -118,7 +118,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Selama {{ $answer_in_days }} ({{ $terbilang }}) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
+                    <p>Selama {{ $answer_in_days }} ({{ $terbilang }}) hari kerja terhitung sejak tanggal {{ \Carbon\Carbon::parse($data->mulai_cuti)->translatedFormat("d F Y") }} sampai dengan {{ \Carbon\Carbon::parse($data->akhir_cuti)->translatedFormat("d F Y") }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
                         <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
                         <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa.</li>
@@ -129,7 +129,7 @@
                 <div class="content-ttd my-4">
                     <div class="d-flex justify-content-end">
                         <div class="">
-                            <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
+                            <p class="text-center p-0">Bondowoso, {{ \Carbon\Carbon::parse(now())->translatedFormat("d F Y") }}</p>
                             <div class="kolom-ttd">
                                 <h4 class="fw-bold text-center p-0" style="font-size: 14px;">KEPALA BADAN KEPEGAWAIAN DAN</h4>
                                 <h4 class="fw-bold text-center p-0" style="font-size: 14px;"> PENGEMBANGAN SUMBER DAYA MANUSIA</h4>

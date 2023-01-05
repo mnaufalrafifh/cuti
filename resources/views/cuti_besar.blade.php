@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-2">
-                        <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
+                        <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data->nama_cuti) }}</u></h2>
                         <p class="text-center">Nomor : 852/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.6.2/2022</p>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Selama {{ $answer_in_days }} ( {{ $terbilang }} ) hari kerja terhitung sejak tanggal {{date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
+                    <p>Selama {{ $answer_in_days }} ( {{ $terbilang }} ) hari kerja terhitung sejak tanggal {{ \Carbon\Carbon::parse($data->mulai_cuti)->translatedFormat("d F Y") }} sampai dengan {{ \Carbon\Carbon::parse($data->akhir_cuti)->translatedFormat("d F Y") }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
                         @if ($answer_in_days <= 15)
                             <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
@@ -135,7 +135,7 @@
                 <div class="content-ttd my-4">
                     <div class="d-flex justify-content-end">
                         <div class="">
-                            <p class="text-center p-0">Bondowoso, {{date("d F Y")}}</p>
+                            <p class="text-center p-0">Bondowoso, {{ \Carbon\Carbon::parse(now())->translatedFormat("d F Y") }}</p>
                             <div class="kolom-ttd">
                                 <h4 class="fw-bold text-center p-0" style="font-size: 14px;">An. BUPATI BONDOWOSO</h4>
                                 <h5 class="fw-bold text-center" style="font-size: 14px;">Sekretaris Daerah</h5>

@@ -118,7 +118,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <p>Selama {{ $answer_in_days }} ({{ $terbilang }}) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ date("d F Y",strtotime($data->akhir_cuti)) }}, dengan ketentuan sebagai berikut :</p>
+                    <p>Selama {{ $answer_in_days }} ({{ $terbilang }}) hari kerja terhitung sejak tanggal {{ date("d F Y",strtotime($data->mulai_cuti)) }} sampai dengan {{ \Carbon\Carbon::parse($data->mulai_cuti)->translatedFormat("d F Y") }}, dengan ketentuan sebagai berikut :</p>
                     <ol class="px-3">
                         <li class="pb-2">Sebelum menjalankan cuti wajib menyerahkan pekerjaannya kepada atasan langsungnya;</li>
                         <li class="pb-2">Setelah selesai menjalankan cuti wajib melaporkan diri kepada atasan langsungnya dan bekerja kembali sebagaimana biasa;</li>

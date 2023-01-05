@@ -64,12 +64,18 @@
                     console.log(element);
                     $("input[name='nama_lengkap']").val(element.nama_lengkap);
                     if (element.jenis_kelamin == "L") {
-                        $('#jenis_kelamin option').attr('disabled', true);
+                        $('#jenis option[value=L]').attr('selected','selected');
+                        // $('#jenis option').attr('disabled','true');
                     } else {
-                        $('#jenis_kelamin option').attr('disabled', true);
+                        $('#jenis option[value=P]').attr('selected','selected');
+                        // $('#jenis option').attr('disabled','true');
+                        // $("#jenis option[value='P']").attr('disabled', true);
+                        // $('#jenis_kelamin option').attr('disabled', true);
 
                     }
                     $("input[name='jabatan']").val(element.jabatan);
+                    $("input[name='unit_kerja']").val(element.satuan_kerja);
+                    $("input[name='masa_kerja']").val(element.masa_kerja);
                 })
 
             }
@@ -146,7 +152,7 @@
                     <div class="form-group col-md-6">
                         <label for="nama" class="control-label col-lg-2"><strong>Nama</strong> <span class="required"></span></label>
                     <div class="col">
-                        <input class="form-control mt-1" id="nama" name="nama_lengkap" minlength="5" placeholder="Masukkan Nama Lengkap" type="text" @error('nama_lengkap') is-invalid @enderror/>
+                        <input class="form-control mt-1" id="nama" readonly name="nama_lengkap" minlength="5" placeholder="Masukkan Nama Lengkap" type="text" @error('nama_lengkap') is-invalid @enderror/>
                     </div>
                     @error('nama_lengkap')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -168,7 +174,7 @@
                     <div class="form-group col-md-6 mt-3">
                        <label for="jabatan" class="control-label col-lg-2"><strong>Jabatan</strong> <span class="required"></span></label>
                     <div class="col">
-                       <input class="form-control mt-1" id="jabatan" name="jabatan" minlength="5" placeholder="Masukkan Jabatan" type="text" @error('jabatan') is-invalid @enderror/>
+                       <input class="form-control mt-1" id="jabatan" readonly name="jabatan" minlength="5" placeholder="Masukkan Jabatan" type="text" @error('jabatan') is-invalid @enderror/>
                     </div>
                     @error('jabatan')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -178,7 +184,7 @@
                     <div class="form-group col-md-6 mt-3">
                        <label for="unit" class="control-label col-lg-4"><strong>Unit Kerja</strong> <span class="required"></span></label>
                     <div class="col">
-                        <input class="form-control mt-1" id="unit" name="unit_kerja" minlength="5" placeholder="Masukkan Unit Kerja" type="text" @error('unit_kerja') is-invalid @enderror/>
+                        <input class="form-control mt-1" id="unit" readonly name="unit_kerja" minlength="5" placeholder="Masukkan Unit Kerja" type="text" @error('unit_kerja') is-invalid @enderror/>
                     </div>
                     @error('unit_kerja')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>
@@ -188,7 +194,7 @@
                     <div class="form-group col-md-3 mt-3">
                       <label for="masa" class="control-label col-lg-5"><strong>Masa Kerja</strong> <span class="required"></span></label>
                     <div class="col">
-                       <input class="form-control mt-1" id="masa" name="masa_kerja" minlength="5" placeholder="Masukkan Masa Kerja" type="number" @error('masa_kerja') is-invalid @enderror/>
+                       <input class="form-control mt-1" id="masa" readonly name="masa_kerja" minlength="5" placeholder="Masukkan Masa Kerja" type="number" @error('masa_kerja') is-invalid @enderror/>
                     </div>
                     @error('masa_kerja')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>

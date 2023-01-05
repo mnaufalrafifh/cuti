@@ -17,6 +17,13 @@
                                 </div>
                             </div>
                         @endif
+                        @if (session('error'))
+                            <div class="alert alert-danger d-flex align-items-center my-4" role="alert">
+                                <div class="fw-bold">
+                                    {{session('error')}}
+                                </div>
+                            </div>
+                        @endif
                         <form action="{{route('ganti-password.update',Auth::user()->id)}}" method="POST">
                             @method('PUT')
                             @csrf
@@ -25,21 +32,21 @@
                                     <small for="old-password" class="form-label">Password Lama</small>
                                     <input type="password" class="form-control" name="old_password" id="old-password" placeholder="Password Lama">
                                     @error('old_password')
-                                        <span class="text-danger">{{ $message }}</span>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col mb-3">
                                     <small for="new-password" class="form-label">Password Baru</small>
                                     <input type="password" class="form-control" name="new_password" id="new-password" placeholder="Password Baru">
                                     @error('new_password')
-                                        <span class="text-danger">{{ $message }}</span>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="col mb-3">
                                     <small for="confirm-new-password" class="form-label">Re-Enter Password</small>
                                     <input type="password" class="form-control" name="confirm_new_password" id="confirm-new-password" placeholder="Re-Enter Password Baru">
                                     @error('confirm_new_password')
-                                        <span class="text-danger">{{ $message }}</span>
+                                        <small class="text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
