@@ -165,6 +165,6 @@
 
 </body>
 <script>
-    //  print();
+     print();
 </script>
 </html>

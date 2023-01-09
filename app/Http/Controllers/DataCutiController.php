@@ -31,7 +31,7 @@ class DataCutiController extends Controller
         ->join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
         ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
         ->orderBy('cutis.id', 'asc');
-        if (Auth::user()->id_roles != 1 && Auth::user()->id_roles != 1) {
+        if (Auth::user()->id_roles != 1 && Auth::user()->id_roles != 2) {
             $data2 = $data2->where('pegawais.id_pegawai',Auth::user()->id)->get();
             return view('admin.form-cuti.semua-data-cuti.index', compact('data2'));
         }else{
