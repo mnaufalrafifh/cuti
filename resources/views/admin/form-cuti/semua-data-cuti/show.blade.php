@@ -108,7 +108,7 @@
                     @enderror
                     </div>
                     <div class="form-group col-md-3 mt-5">
-                        <label for="cname" class="control-label col-lg-6"><strong>Tahun</strong> <span class="required"></span></label>
+                        <label for="cname" class="control-label col-lg-6"><strong>Bulan</strong> <span class="required"></span></label>
                     </div>
 
                     </div>
