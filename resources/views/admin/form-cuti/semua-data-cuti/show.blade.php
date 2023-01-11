@@ -20,6 +20,12 @@
       <div class="col-lg-12">
           <h3 class="page-header">Create Pengajuan Cuti</h3>
       </div>
+
+      <div class="d-flex justify-content-end">
+        {{-- <a class="btn btn-danger mx-2" href="{{route('data-cuti.index')}}">Kembali</a> --}}
+        <a class="btn btn-primary mx-2" href="{{route('form-pengajuan')}}">Download Pengajuan Cuti</a>
+      </div>
+
       @if (session('status'))
       <br>
       <div class="alert alert-success" role="alert">
@@ -114,7 +120,6 @@
                     </div>
                    </div>
                  </div>
-
                  <div class="card">
                   <div class="card-body">
                    <h5 class="card-title">Data Cuti</h5>
@@ -211,6 +216,18 @@
                             </div>
                         </div>
                     </div>
+
+                    {{-- <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Surat Dokter</h5>
+                            <div class="row">
+                                <div class="form-group col-md-6 d-flex justify-content-center">
+                                    <iframe src="{{asset('image/ttd/'.$data->upload_suratdokter)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> --}}
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Status Penerimaan</h5>

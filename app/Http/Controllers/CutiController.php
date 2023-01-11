@@ -72,11 +72,12 @@ class CutiController extends DataCutiController
                 'akhir_cuti' => 'required',
                 'alamat_cuti' => 'required',
                 'no_telp' => 'required',
-                'upload_file' => 'required|mimes:pdf'
+                'upload_file' => 'required|mimes:pdf',
+                'upload_ttd' => 'required|mimes:png'
             ],
             [
                 'required' => ':Attribute harus terisi',
-                'mimes' => ':Attribute harus berupa pdf'
+                'mimes' => ':Attribute harus terisi'
             ],
             [
                 'nip' => 'NIP',
@@ -92,12 +93,17 @@ class CutiController extends DataCutiController
                 'akhir_cuti' => 'Akhir Cuti',
                 'alamat_cuti' => 'Alamat Cuti',
                 'no_telp' => 'No Telepon',
-                'upload_file' => 'File Persyaratan'
+                'upload_file' => 'File Persyaratan',
+                'upload_ttd'=> 'Tanda Tangan'
             ]
         );
         $file = $request->file('upload_file');
         $date = date("d-m-Y His");
         $final_file_name = $date . '.' . $file->getClientOriginalExtension();
+
+        $file2 = $request->file('upload_ttd');
+        $date2 = date("d-m-Y His");
+        $final_file_name2 = $date2 . '.' . $file2->getClientOriginalExtension();
 
         try {
             $tambahDataP = new PegawaiModel;
@@ -129,6 +135,10 @@ class CutiController extends DataCutiController
             $path = public_path('image\file_persyaratan');
             if ($file->move($path, $final_file_name)) {
                 $tambahDataC->upload_file = $final_file_name;
+            }
+            $path2 = public_path('image\file_ttd');
+            if ($file2->move($path2, $final_file_name2)) {
+                $tambahDataC->upload_ttd = $final_file_name2;
             }
             $tambahDataC->save();
             return redirect()->back()->withStatus('Berhasil Menambahkan Data');
