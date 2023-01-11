@@ -7,6 +7,8 @@
         <span class="d-none d-lg-block mt-1 px-2">SI-ASIC</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div>
+
     </div><!-- End Logo -->
 
     <nav class="header-nav ms-auto">

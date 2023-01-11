@@ -27,6 +27,7 @@ return new class extends Migration
             ->cascadeOnUpdate()->cascadeOnDelete();
             $table->enum('status', ['Ditangguhkan', 'Disetujui', 'Ditolak', 'Perubahan']);
             $table->string('upload_file');
+            $table->string('upload_ttd');
             $table->timestamps();
         });
     }

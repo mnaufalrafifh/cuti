@@ -82,7 +82,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-8 mx-auto my-2">
                         <h2 class="fw-bold text-center p-0" style="font-size: 24px"><u>SURAT IZIN {{ strtoupper($data -> nama_cuti) }}</u></h2>
-                        <p class="text-center">Nomor : 852/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.6.2/2022</p>
+                        <p class="text-center">Nomor : 852/&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;/430.6.2/{{ \Carbon\Carbon::parse(now())->translatedFormat("Y") }}</p>
                     </div>
                 </div>
                 <div class="content">

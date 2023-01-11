@@ -202,7 +202,7 @@
                     @enderror
                     </div>
                     <div class="form-group col-md-3 mt-5">
-                        <label for="cname" class="control-label col-lg-6"><strong>Tahun</strong> <span class="required"></span></label>
+                        <label for="cname" class="control-label col-lg-6"><strong>Bulan</strong> <span class="required"></span></label>
                     </div>
 
                     </div>
@@ -347,6 +347,38 @@
                   </div>
                 </div>
                 </div>
+
+                <div class="card">
+                    <div class="card-body">
+                     <h5 class="card-title">Upload Surat Dokter</h5>
+
+                     <div class="row">
+                     <div class="form-group col-md-6 d-flex justify-content-center">
+                         <input type="file" name="upload_suratdokter" class="form-control mx-auto">
+                     </div>
+                     {{-- @error('upload_ttd')
+                      <small class="text-danger ml-4" for="">{{ $message }}</small>
+                      <br>
+                     @enderror --}}
+                    </div>
+                  </div>
+                  </div>
+
+                <div class="card">
+                    <div class="card-body">
+                     <h5 class="card-title">Upload Tanda Tangan</h5>
+
+                     <div class="row">
+                     <div class="form-group col-md-6 d-flex justify-content-center">
+                         <input type="file" name="upload_ttd" class="form-control mx-auto" @error('upload_ttd') is-invalid @enderror id="">
+                     </div>
+                     @error('upload_ttd')
+                      <small class="text-danger ml-4" for="">{{ $message }}</small>
+                      <br>
+                     @enderror
+                    </div>
+                  </div>
+                  </div>
 
                     <div class="col justify-content-end">
                       {{-- <td><a class="btn btn-danger mt-2" href="/">Kembali</a></td> --}}

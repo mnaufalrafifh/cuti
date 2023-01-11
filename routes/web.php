@@ -53,5 +53,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/ganti-password/{id}', [Profile::class, 'ganti-password']);
     Route::resource('/ganti-password', ProfileController::class);
+
+    Route::get('/form-pengajuan', function(){
+        return view('form_pengajuan_cuti');
+    });
 });
 require __DIR__.'/auth.php';
