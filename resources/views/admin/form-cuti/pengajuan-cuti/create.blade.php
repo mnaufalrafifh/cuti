@@ -3,6 +3,9 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
     <style>
+        .hidden{
+            display: none;
+        }
         .select2-container {
             width: 100% !important;
 
@@ -51,7 +54,15 @@
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
     $('#nip').select2();
+    $('#jenisCuti').on('change',function() {
+        var t = $("#jenisCuti option:selected").text()
+        if (t == 'Cuti Sakit') {
+            $('#upload_surat').removeClass('hidden');
+        }else{
+            $('#upload_surat').addClass('hidden');
 
+        }
+    })
     $('#nip').on('change', function() {
         var nip = $(this).val();
         $.ajax({
@@ -64,12 +75,8 @@
                     $("input[name='nama_lengkap']").val(element.nama_lengkap);
                     if (element.jenis_kelamin == "L") {
                         $('#jenis option[value=L]').attr('selected','selected');
-                        // $('#jenis option').attr('disabled','true');
                     } else {
                         $('#jenis option[value=P]').attr('selected','selected');
-                        // $('#jenis option').attr('disabled','true');
-                        // $("#jenis option[value='P']").attr('disabled', true);
-                        // $('#jenis_kelamin option').attr('disabled', true);
 
                     }
                     $("input[name='jabatan']").val(element.jabatan);
@@ -347,10 +354,9 @@
                 </div>
                 </div>
 
-                <div class="card">
+                <div class="card hidden" id="upload_surat">
                     <div class="card-body">
                      <h5 class="card-title">Upload Surat Dokter</h5>
-
                      <div class="row">
                      <div class="form-group col-md-6 d-flex justify-content-center">
                          <input type="file" name="upload_suratdokter" class="form-control mx-auto">
