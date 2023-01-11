@@ -12,6 +12,7 @@ use DateInterval;
 use DatePeriod;
 use DateTime;
 use Exception;
+use GuzzleHttp\Client;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -223,6 +224,16 @@ class DataCutiController extends Controller
                                 ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
                                 ->where('cutis.id', $id)
                                 ->first();
+        $client = new Client;
+        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/'.$data->nip, [
+            'query' => [
+                'api_key' => env('BILLING_API_KEY'),
+            ]
+        ]);
+
+        $body = (string) $res->getBody();
+        $body = json_decode($body, true);
+        $data_pegawai =  collect($body)->all();
         // $to_date = Carbon::createFromFormat('Y-m-d', $data->akhir_cuti);
         // $from_date = Carbon::createFromFormat('Y-m-d', $data->mulai_cuti);
         // $answer_in_days = $to_date->diffInDays($from_date);
@@ -230,17 +241,17 @@ class DataCutiController extends Controller
         $answer_in_days = $data->lama_kerja == '5' ? $this->cekLimaHari($data->mulai_cuti, $data->akhir_cuti) : $this->cekHariLibur($data->mulai_cuti, $data->akhir_cuti);
         $terbilang = ucwords($this->terbilang((int) $answer_in_days));
         if ($data->nama_cuti == 'Cuti Tahunan') {
-            return view('cuti_tahunan', compact('data', 'answer_in_days', 'terbilang'));
+            return view('cuti_tahunan', compact('data', 'answer_in_days', 'terbilang','data_pegawai'));
         }elseif ($data->nama_cuti == 'Cuti Besar') {
-            return view('cuti_besar', compact('data', 'answer_in_days','terbilang'));
+            return view('cuti_besar', compact('data', 'answer_in_days','terbilang','data_pegawai'));
         }elseif ($data->nama_cuti == 'Cuti Sakit') {
-            return view('cuti_sakit', compact('data', 'answer_in_days','terbilang'));
+            return view('cuti_sakit', compact('data', 'answer_in_days','terbilang','data_pegawai'));
 
         }elseif ($data->nama_cuti == 'Cuti Melahirkan') {
-            return view('cuti_melahirkan', compact('data', 'answer_in_days','terbilang'));
+            return view('cuti_melahirkan', compact('data', 'answer_in_days','terbilang','data_pegawai'));
 
         }elseif ($data->nama_cuti == 'Cuti Karena Alasan Penting') {
-            return view('cuti_alasan_penting', compact('data', 'answer_in_days','terbilang'));
+            return view('cuti_alasan_penting', compact('data', 'answer_in_days','terbilang','data_pegawai'));
         }elseif ($data->nama_cuti == 'Cuti Di Luar Tanggungan Negara') {
 
         }
