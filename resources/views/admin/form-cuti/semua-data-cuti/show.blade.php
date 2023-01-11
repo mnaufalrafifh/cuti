@@ -1,6 +1,82 @@
 @extends('layouts.template_back-end')
+@push('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <style>
+        .select2-container {
+            width: 100% !important;
+
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: 0.35rem;
+            border: 1px solid #d1d3e2;
+            height: calc(1.95rem + 5px);
+            background: #fff;
+        }
+
+        .select2-container--default .select2-selection--single:hover,
+        .select2-container--default .select2-selection--single:focus,
+        .select2-container--default .select2-selection--single.active {
+            box-shadow: none;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            line-height: 32px;
+
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            border-color: #eaeaea;
+            border-radius: 0;
+        }
+
+        .select2-dropdown {
+            border-radius: 0;
+        }
+
+        .select2-container--default .select2-results__option--highlighted[aria-selected] {
+            background-color: #3838eb;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border-color: #eaeaea;
+            background: #fff;
+
+        }
+    </style>
+@endpush
 @push('js')
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script type="text/javascript">
+    $('#nip').select2();
+    $('#nip').on('change', function() {
+        var nip = $(this).val();
+        $.ajax({
+            url: `/pengajuan-cuti/autocomplete?nip=${nip}`,
+            type: "GET",
+            dataType: 'JSON',
+            success:function (res) {
+                res.forEach(element => {
+                    console.log(element);
+                    $("input[name='nama_lengkap']").val(element.nama_lengkap);
+                    if (element.jenis_kelamin == "L") {
+                        $('#jenis option[value="L"]').prop('selected', true);
+                        $('#jenis option[value="P"]').prop('selected', false);
+                    } else if(element.jenis_kelamin == "P") {
+                        $('#jenis option[value="L"]').prop('selected', false);
+                        $('#jenis option[value="P"]').prop('selected', true);
+
+                    }
+                    $("input[name='jabatan']").val(element.jabatan);
+                    $("input[name='unit_kerja']").val(element.satuan_kerja);
+                    $("input[name='masa_kerja']").val(element.masa_kerja);
+                })
+
+            }
+        })
+    })
     function GetDays(){
             var dropdt = new Date(document.getElementById("drop_date").value);
             var pickdt = new Date(document.getElementById("pick_date").value);
@@ -54,7 +130,12 @@
                         <input type="hidden" name="id_pegawai" value="{{$data->id_pegawai}}">
                         <label for="nip" class="control-label col-lg-2"><strong>NIP</strong> <span class="required"></span></label>
                     <div class="col">
-                        <input class="form-control mt-1" id="nip" value="{{$data->nip}}" name="nip" readonly minlength="5" read placeholder="Masukkan NIP" type="number" @error('nip') is-invalid @enderror/>
+                        <select name="nip" id="nip"  class="form-control">
+                            <option value="0">Cari NIP anda...</option>
+                            @foreach ($data_pegawai as $item)
+                            <option value="{{ $item['nip'] }}"  {{ $item['nip'] == $data->nip ? 'selected' : '' }}>{{ $item['nip'] }}</option>
+                            @endforeach
+                        </select>
                     </div>
                     @error('nip')
                       <small class="text-danger ml-4" for="">{{ $message }}</small>

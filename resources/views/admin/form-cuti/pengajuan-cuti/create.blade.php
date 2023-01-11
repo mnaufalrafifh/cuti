@@ -48,17 +48,16 @@
 @endpush
 @push('js')
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js" ></script> --}}
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-{{-- <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script> --}}
 <script type="text/javascript">
     $('#nip').select2();
 
     $('#nip').on('change', function() {
         var nip = $(this).val();
         $.ajax({
-            url: `pengajuan-cuti/autocomplete/${nip}`,
-            method:"get",
+            url: `/pengajuan-cuti/autocomplete?nip=${nip}`,
+            type: "GET",
+            dataType: 'JSON',
             success:function (res) {
                 res.forEach(element => {
                     console.log(element);
