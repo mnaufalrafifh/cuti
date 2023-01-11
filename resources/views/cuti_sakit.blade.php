@@ -43,11 +43,19 @@
                 width: 210mm;
                 height: 297mm;
             }
+            .no-print, .no-print *
+            {
+                display: none !important;
+            }
         /* ... the rest of the rules ... */
         }
     </style>
 </head>
 <body>
+    <div class="d-flex justify-content-start p-5 no-print">
+        <button onclick="history.back()" class="btn btn-primary btn-icon-text no-print"><i class="ti-angle-left btn-icon-prepend"></i> Kembali</button>
+
+    </div>
     <div class="p-4 my-5">
         <div class="row">
             <div class="col-md-12 mx-auto">
@@ -103,7 +111,7 @@
                                 <tr>
                                     <td width="30%" class="py-1">Pangkat / Golongan Ruang</td>
                                     <td width="1%">:</td>
-                                    <td >{{ ($data -> nama) }}</td>
+                                    <td >{{ ($data_pegawai[0]['golongan']) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="py-1">Jabatan</td>

@@ -101,7 +101,7 @@
                                 <tr>
                                     <td width="30%" class="py-1">Pangkat / Golongan Ruang</td>
                                     <td width="1%">:</td>
-                                    <td >{{ ($data -> nama) }}</td>
+                                    <td >{{ ($data_pegawai[0]['golongan']) }}</td>
                                 </tr>
                                 <tr>
                                     <td width="20%" class="py-1">Jabatan</td>
