@@ -246,6 +246,7 @@ class DataCutiController extends Controller
         $body = json_decode($body, true);
         $data_pegawai =  collect($body)->all();
         $jenis = JenisCutiModel::latest()->get();
+
         return view('admin.form-cuti.semua-data-cuti.pdf', compact('data','jenis','data_pegawai'));
     }
 

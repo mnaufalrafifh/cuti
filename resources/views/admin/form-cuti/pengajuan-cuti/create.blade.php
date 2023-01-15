@@ -309,6 +309,39 @@
                     @enderror
                   </div>
 
+                  <div class="form-group col-md-6 mt-3">
+                    <label for="nama_dokter" class="control-label col-lg-4"><strong>Nama Dokter</strong> <span class="required"></span></label>
+                 <div class="col">
+                     <input class="form-control mt-1" id="nama_dokter" name="nama_dokter" minlength="5" placeholder="Masukkan Nama Dokter" type="text"/>
+                 </div>
+                 {{-- @error('unit_kerja')
+                   <small class="text-danger ml-4" for="">{{ $message }}</small>
+                   <br>
+                 @enderror --}}
+                 </div>
+
+                 <div class="form-group col-md-6 mt-3">
+                    <label for="kabupaten" class="control-label col-lg-4"><strong>Kabupaten</strong> <span class="required"></span></label>
+                 <div class="col">
+                     <input class="form-control mt-1" id="kabupaten" name="kabupaten" minlength="5" placeholder="Masukkan Kabupaten" type="text" @error('unit_kerja') is-invalid @enderror/>
+                 </div>
+                 {{-- @error('unit_kerja')
+                   <small class="text-danger ml-4" for="">{{ $message }}</small>
+                   <br>
+                 @enderror --}}
+                 </div>
+
+                 <div class="form-group col-md-6 mt-3">
+                    <label for="tanggal_periksa" class="control-label col-lg-4"><strong>Tanggal Pemeriksaan</strong> <span class="required"></span></label>
+                 <div class="col">
+                    <input class="form-control mt-1" id="tanggal_periksa" name="tanggal_periksa" type="date"/>
+                 </div>
+                 {{-- @error('unit_kerja')
+                   <small class="text-danger ml-4" for="">{{ $message }}</small>
+                   <br>
+                 @enderror --}}
+                 </div>
+
                    </div>
                   </div>
                 </div>

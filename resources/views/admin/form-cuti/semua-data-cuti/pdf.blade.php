@@ -69,9 +69,9 @@
                         <div class="pt-4 d-flex flex-column ">
                             <p class="m-0 text-uppercase " style="font-size: 14px !important">Bondowoso, {{ \Carbon\Carbon::parse(now())->translatedFormat("d F Y") }}</p>
                             <center class="text-uppercase" style="font-size: 14px !important">Kepada</center>
-                            <p class="m-0" style="font-size: 14px !important">Yth:...............</p>
+                            <p class="m-0" style="font-size: 14px !important">Yth:</p><br>
                             <p class="m-0 px-4" style="font-size: 14px !important">di</p><br>
-                            <p class="m-0" style="font-size: 14px !important">...............</p>
+                            <p class="m-0" style="font-size: 14px !important"></p>
                         </div>
 
                     </div>
@@ -149,8 +149,8 @@
                         <table class="table table-bordered table-responsive-sm w-100">
                             <thead>
                                 <tr>
-                                    <td width="5%">Selama</td>
-                                    <td width="6%">(hari/bulan/tahun)* </td>
+                                    <td width="2%">Selama</td>
+                                    <td width="9%"> &nbsp; &nbsp; (hari/bulan/tahun)* </td>
                                     <td width="15%">mulai tanggal</td>
                                     <td width="15%" class="fw-bold"> {{ \Carbon\Carbon::parse($data->mulai_cuti)->translatedFormat("d F Y") }}</td>
                                     <td width="2%" >s/d</td>
@@ -167,35 +167,35 @@
                                 <tr>
                                     <td width="10%" colspan="3">1. CUTI TAHUNAN</td>
                                     <td width="10%">2. CUTI BESAR</td>
-                                    <td width="10%" class="fw-bold">214</td>
+                                    <td width="10%" class="fw-bold"></td>
                                 </tr>
                                 <tr>
                                     <td width="10%">Tahun</td>
                                     <td width="10%">Sisa</td>
                                     <td width="10%">Keterangan</td>
                                     <td width="10%">3. CUTI SAKIT</td>
-                                    <td width="10%" class="fw-bold">214</td>
+                                    <td width="10%" class="fw-bold"></td>
                                 </tr>
                                 <tr>
                                     <td width="10%">N-2</td>
                                     <td width="10%"></td>
                                     <td width="10%"></td>
                                     <td width="10%">4. CUTI MELAHIRKAN</td>
-                                    <td width="10%" class="fw-bold">214</td>
+                                    <td width="10%" class="fw-bold"></td>
                                 </tr>
                                 <tr>
                                     <td width="10%">N-1</td>
                                     <td width="10%"></td>
                                     <td width="10%"></td>
                                     <td width="10%">5. CUTI KARENA ALASAN PENTING</td>
-                                    <td width="10%" class="fw-bold">214</td>
+                                    <td width="10%" class="fw-bold"></td>
                                 </tr>
                                 <tr>
                                     <td width="10%">N</td>
                                     <td width="10%"></td>
                                     <td width="10%"></td>
                                     <td width="15%">6. CUTI DI LUAR TANGGUNGAN NEGARA</td>
-                                    <td width="10%" class="fw-bold">214</td>
+                                    <td width="10%" class="fw-bold"></td>
                                 </tr>
                             </thead>
                         </table>
@@ -218,8 +218,8 @@
                                         <div class="p-5"></div>
                                         <div class="d-flex justify-content-center">
                                             <div class="d-flex flex-column">
-                                                <p class="m-0 p-0">(___________________)</p>
-                                                <p class="m-0 p-0">NIP.</p>
+                                                <center><p class="m-0 p-0" style="font-size: 14px">({{$data->nama_lengkap}})</p></center>
+                                                <p class="m-0 p-0" style="font-size: 14px">NIP. {{$data->nip}}</p>
                                             </div>
                                         </div>
                                     </td>
@@ -248,10 +248,10 @@
                         </table>
                         <div class="d-flex justify-content-end w-100">
                             <div class="">
-                                <p>Kasubbag</p>
+                                <p></p>
                                 <div class="py-4"></div>
-                                <p class="m-0">Baharudin</p>
-                                <p>NIP :196706141988090090</p>
+                                <center><p class="m-0">(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)</p><center>
+                                <p class="d-flex justify-content-start">NIP : </p>
                             </div>
                         </div>
                     </div>
@@ -276,10 +276,10 @@
                         </table>
                         <div class="d-flex justify-content-end w-100">
                             <div class="">
-                                <p>Kasubbag</p>
+                                <p></p>
                                 <div class="py-4"></div>
-                                <p class="m-0">Baharudin</p>
-                                <p>NIP :196706141988090090</p>
+                                <center><p class="m-0">(&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;)</p><center>
+                                <p class="d-flex justify-content-start">NIP : </p>
                             </div>
                         </div>
                     </div>
@@ -330,7 +330,7 @@
                                                 <p class="m-0"> N </p>
                                             </td>
                                             <td>
-                                                <p class="">' = Cuti tahun berjalan</p>
+                                                <p class="">= Cuti tahun berjalan</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -342,7 +342,7 @@
                                                 <p class="m-0"> N-1 </p>
                                             </td>
                                             <td>
-                                                <p class="">' = Sisa cuti 1 tahun sebelumnya</p>
+                                                <p class="">= Sisa cuti 1 tahun sebelumnya</p>
                                             </td>
                                         </tr>
                                     </table>
@@ -354,7 +354,7 @@
                                                 <p class="m-0"> N- 2 </p>
                                             </td>
                                             <td>
-                                                <p class="">' = Sisa cuti 2 tahun sebelumnya</p>
+                                                <p class="">= Sisa cuti 2 tahun sebelumnya</p>
                                             </td>
                                         </tr>
                                     </table>

@@ -285,7 +285,6 @@
                   </div>
                 </div>
 
-
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">File Persyaratan</h5>
@@ -298,17 +297,17 @@
                         </div>
                     </div>
 
-                    {{-- <div class="card">
+                    <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Surat Dokter</h5>
                             <div class="row">
                                 <div class="form-group col-md-6 d-flex justify-content-center">
-                                    <iframe src="{{asset('image/ttd/'.$data->upload_suratdokter)}}" style="width:600px; height:500px;" frameborder="0"></iframe>
+                                    <iframe src="" style="width:600px; height:500px;" frameborder="0"></iframe>
                                 </div>
 
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Status Penerimaan</h5>
