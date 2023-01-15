@@ -93,7 +93,8 @@
                     </div>
                 </div>
                 <div class="content">
-                    <p>Diberikan {{ ($data -> nama_cuti) }} untuk tahun {{ date("Y",strtotime($data->mulai_cuti)) }} kepada Pegawai Negeri Sipil :</p>
+                    {{-- <p>Diberikan {{ ($data -> nama_cuti) }} untuk tahun {{ date("Y",strtotime($data->mulai_cuti)) }} kepada Pegawai Negeri Sipil :</p> --}}
+                    <p>Berdasarkan surat keterangan sakit dari dr. H. Slamet Santoso di Kabupaten Bondowoso, telah melakukan pemeriksaan pada hari Rabu tanggal 2 November 2022, dengan ini diberikan Cuti Sakit kepada Pegawai Negeri Sipil:</p>
                     <div class="table-responsive">
                         <table class="">
                             <tbody>
