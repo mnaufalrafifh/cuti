@@ -224,8 +224,31 @@ class DataCutiController extends Controller
         $data_pegawai =  collect($body)->all();
         $jenis = JenisCutiModel::latest()->get();
         return view('admin.form-cuti.semua-data-cuti.show', compact('data','jenis','data_pegawai'));
-
     }
+
+    public function downloadPC($id)
+    {
+        $data = CutiModel::select('cutis.*','jenis_cutis.id as id_jenis','jenis_cutis.nama_cuti','jenis_cutis.lama_cuti','pegawais.id as id_pegawai',
+        'pegawais.nip','pegawais.nama_lengkap','pegawais.jenis_kelamin','pegawais.jabatan',
+        'pegawais.unit_kerja','pegawais.masa_kerja')
+        ->join('jenis_cutis', 'cutis.id_jenisCuti', 'jenis_cutis.id')
+        ->join('pegawais', 'cutis.id_pegawai', 'pegawais.id')
+        ->where('cutis.id', $id)
+        ->first();
+        $client = new Client;
+        $res = $client->request('GET', env('SIMPEG_URL') . 'api/pegawai_simpeg/', [
+            'query' => [
+                'api_key' => env('BILLING_API_KEY'),
+            ]
+        ]);
+
+        $body = (string) $res->getBody();
+        $body = json_decode($body, true);
+        $data_pegawai =  collect($body)->all();
+        $jenis = JenisCutiModel::latest()->get();
+        return view('admin.form-cuti.semua-data-cuti.pdf', compact('data','jenis','data_pegawai'));
+    }
+
     public function UpdateStatus(Request $request, $id)
     {
         $updateDataC = CutiModel::find($id);

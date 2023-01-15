@@ -99,7 +99,7 @@
 
       <div class="d-flex justify-content-end">
         {{-- <a class="btn btn-danger mx-2" href="{{route('data-cuti.index')}}">Kembali</a> --}}
-        <a class="btn btn-primary mx-2" href="{{route('form-pengajuan')}}">Download Pengajuan Cuti</a>
+        <a class="btn btn-primary mx-2" href="{{route('download.cuti.pengajuan',$data->id)}}">Download Pengajuan Cuti</a>
       </div>
 
       @if (session('status'))

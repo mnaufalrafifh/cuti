@@ -54,7 +54,6 @@
 <body>
     <div class="d-flex justify-content-start p-5 no-print">
         <button onclick="history.back()" class="btn btn-primary btn-icon-text no-print"><i class="ti-angle-left btn-icon-prepend"></i> Kembali</button>
-
     </div>
     <div class="p-4 my-5">
         <div class="row">

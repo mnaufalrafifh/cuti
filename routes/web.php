@@ -49,6 +49,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('download-pdf/{id}',[DataCutiController::class,'download'])->name('download.cuti');
     Route::post('update-status/{id}',[DataCutiController::class,'UpdateStatus'])->name('updates.cuti');
     Route::get('status/{id}',[DataCutiController::class,'status'])->name('status.cuti');
+    Route::get('download-status-pdf/{id}',[DataCutiController::class,'downloadPC'])->name('download.cuti.pengajuan');
     Route::resource('/data-cuti', DataCutiController::class);
 
     Route::get('/ganti-password/{id}', [Profile::class, 'ganti-password']);
